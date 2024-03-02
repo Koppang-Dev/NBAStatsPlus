@@ -20,6 +20,9 @@
 		1001DF6E2B93C42800435861 /* PageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF6D2B93C42800435861 /* PageViews.swift */; };
 		1001DF712B93C6B100435861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF702B93C6B100435861 /* LoginView.swift */; };
 		1001DF732B93C6F500435861 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF722B93C6F500435861 /* SignupView.swift */; };
+		1001DF762B93C79D00435861 /* AuthenticationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF752B93C79D00435861 /* AuthenticationTopView.swift */; };
+		1001DF792B93C7FB00435861 /* SignupFirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF782B93C7FB00435861 /* SignupFirebaseModel.swift */; };
+		1001DF7B2B93C84200435861 /* LoginFirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		1001DF6D2B93C42800435861 /* PageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViews.swift; sourceTree = "<group>"; };
 		1001DF702B93C6B100435861 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1001DF722B93C6F500435861 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		1001DF752B93C79D00435861 /* AuthenticationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTopView.swift; sourceTree = "<group>"; };
+		1001DF782B93C7FB00435861 /* SignupFirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirebaseModel.swift; sourceTree = "<group>"; };
+		1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 		1001DF692B93C2EA00435861 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1001DF772B93C7DE00435861 /* AuthenticationModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,8 +190,18 @@
 				1001DF6B2B93C32200435861 /* OnboardingView.swift */,
 				1001DF6D2B93C42800435861 /* PageViews.swift */,
 				1001DF722B93C6F500435861 /* SignupView.swift */,
+				1001DF752B93C79D00435861 /* AuthenticationTopView.swift */,
 			);
 			path = OnboardingView;
+			sourceTree = "<group>";
+		};
+		1001DF772B93C7DE00435861 /* AuthenticationModel */ = {
+			isa = PBXGroup;
+			children = (
+				1001DF782B93C7FB00435861 /* SignupFirebaseModel.swift */,
+				1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */,
+			);
+			path = AuthenticationModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +339,9 @@
 				1001DF712B93C6B100435861 /* LoginView.swift in Sources */,
 				1001DF3E2B93C27600435861 /* NBAStatsPlus.xcdatamodeld in Sources */,
 				1001DF342B93C27600435861 /* AppDelegate.swift in Sources */,
+				1001DF762B93C79D00435861 /* AuthenticationTopView.swift in Sources */,
+				1001DF792B93C7FB00435861 /* SignupFirebaseModel.swift in Sources */,
+				1001DF7B2B93C84200435861 /* LoginFirebaseModel.swift in Sources */,
 				1001DF6C2B93C32200435861 /* OnboardingView.swift in Sources */,
 				1001DF6E2B93C42800435861 /* PageViews.swift in Sources */,
 				1001DF362B93C27600435861 /* SceneDelegate.swift in Sources */,
