@@ -13,7 +13,7 @@ class LoginView: UIViewController {
     //MARK: Initalizing Variables
     
     // Lazy means the value is not calculated until the first time it is needed
-    lazy var firebaseObj: LoginFirebase = {
+    lazy var firebaseObj: LoginFirebaseModel = {
            return LoginFirebase(loginPage: self)
        }()
        

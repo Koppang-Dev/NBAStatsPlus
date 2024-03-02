@@ -64,7 +64,7 @@ extension PageViews {
                                              subtitleText: "Customize your NBA experience. Follow your favorite teams and players, receive personalized notifications, and stay connected to the game like never before",
                                              viewColour: .systemRed)
         
-        let page4 = LoginViewController(); // View Controller for the user to enter account information
+        let page4 = LoginView(); // View Controller for the user to enter account information
         
         // Adding to the [UIViewController] array already defined
         pages.append(page1)
