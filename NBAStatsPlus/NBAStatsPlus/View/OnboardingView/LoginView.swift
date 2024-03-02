@@ -18,7 +18,7 @@ class LoginView: UIViewController {
        }()
        
     // Initalizing Top View
-    let viewHelper = SignupPageUI()
+    let viewHelper = SignupView()
     let viewStack = UIStackView()
     let topView = AuthenticationTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
     var emailField = UITextField()
@@ -151,7 +151,7 @@ extension LoginView {
     
     // Transitioning to the Signup view controller
     @objc func signupPressed(_ sender: UIButton) {
-        let vc = SignupPageUI()
+        let vc = SignupView()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
@@ -206,7 +206,7 @@ extension LoginView {
 extension LoginView {
     // Going from Login page to Signup page
     public func loginToSignup() {
-        let vc = SignupPageUI()
+        let vc = SignupView()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }

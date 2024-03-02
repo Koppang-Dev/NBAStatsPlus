@@ -26,6 +26,7 @@
 		1001DF7B2B93C84200435861 /* LoginFirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */; };
 		1001DF7E2B93CA8700435861 /* SignupFirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7D2B93CA8700435861 /* SignupFirebaseViewModel.swift */; };
 		1001DF802B93CA9000435861 /* LoginFirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7F2B93CA9000435861 /* LoginFirebaseViewModel.swift */; };
+		1001DF822B93F04500435861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1001DF812B93F04500435861 /* GoogleService-Info.plist */; };
 		822476ECD3CAA472D67540CA /* Pods_NBAStatsPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F1B06B403FD947ECF05C4D /* Pods_NBAStatsPlus.framework */; };
 		B2E0F0DDEF56D957ECA35F95 /* Pods_NBAStatsPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43AAB3415B791D34EE3F46A /* Pods_NBAStatsPlusTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseModel.swift; sourceTree = "<group>"; };
 		1001DF7D2B93CA8700435861 /* SignupFirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirebaseViewModel.swift; sourceTree = "<group>"; };
 		1001DF7F2B93CA9000435861 /* LoginFirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseViewModel.swift; sourceTree = "<group>"; };
+		1001DF812B93F04500435861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		119268851FE1E6733FD64EDA /* Pods-NBAStatsPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus.release.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus/Pods-NBAStatsPlus.release.xcconfig"; sourceTree = "<group>"; };
 		1828C89FAD6C5E26C9B71289 /* Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus-NBAStatsPlusUITests/Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D47B5638D20A85732EA4286 /* Pods_NBAStatsPlus_NBAStatsPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAStatsPlus_NBAStatsPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				1001DF662B93C2AA00435861 /* Delegates */,
 				1001DF3F2B93C27700435861 /* Assets.xcassets */,
 				1001DF442B93C27700435861 /* Info.plist */,
+				1001DF812B93F04500435861 /* GoogleService-Info.plist */,
 				1001DF3C2B93C27600435861 /* NBAStatsPlus.xcdatamodeld */,
 			);
 			path = NBAStatsPlus;
@@ -370,6 +373,7 @@
 				1001DF432B93C27700435861 /* LaunchScreen.storyboard in Resources */,
 				1001DF402B93C27700435861 /* Assets.xcassets in Resources */,
 				1001DF3B2B93C27600435861 /* Main.storyboard in Resources */,
+				1001DF822B93F04500435861 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

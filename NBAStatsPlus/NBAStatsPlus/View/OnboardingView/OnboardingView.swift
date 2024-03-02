@@ -15,6 +15,9 @@ class OnboardingView: UIViewController {
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()
+    var currentBackgroundColour: UIColor = .white
+
+
     
     
     //MARK: Constructor
@@ -23,6 +26,7 @@ class OnboardingView: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // Initalizing the UIComponents components
+        self.currentBackgroundColour = viewColour
         imageView.image = UIImage(named: imageName)
         titleLabel.text = titleText
         subtitleLabel.text = subtitleText
@@ -74,7 +78,7 @@ extension OnboardingView {
         subtitleLabel.numberOfLines = 0
         
         // Setting the background colour for the current viewcontroller
-        view.backgroundColor = .white
+        view.backgroundColor = currentBackgroundColour
     }
     
     

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class SignupPageView: UIViewController {
+class SignupView: UIViewController {
     
     //MARK: Variable Initalizing
     let insideStack = UIStackView()
@@ -110,7 +110,7 @@ class SignupPageView: UIViewController {
 }
 
 // MARK: @objc functions
-extension SignupPageView {
+extension SignupView {
     // Log In User
     @objc func loginButtonTapped(_ sender: UIButton) {
         // Creating instance of the mainViewController
@@ -140,12 +140,7 @@ extension SignupPageView {
     }
     
     
-    /*
-     Private func can only be used in it's class definition
-     withText text:
-        - withText is used when using the instance of this function (External Parameter)
-        - text is used as the internal parameter name
-     */
+    // Stylying the text field
     private func styleTextField(_ textField: UITextField, withText text: String) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .systemGray5
@@ -153,8 +148,8 @@ extension SignupPageView {
         textField.layer.cornerRadius = 8
     }
     
+    //MARK: Layout
     func layout() {
-        
         
         // Top view
         view.addSubview(topView)
@@ -173,6 +168,7 @@ extension SignupPageView {
         insideStack.addArrangedSubview(signupButton)
         insideStack.addArrangedSubview(loginButton)
         
+        // Manually Setting Constraints
         signupLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameField.translatesAutoresizingMaskIntoConstraints = false
         emailField.translatesAutoresizingMaskIntoConstraints = false
@@ -181,14 +177,11 @@ extension SignupPageView {
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
+        // Stack Components
         insideStack.spacing = 30
         insideStack.axis = .vertical
-        
         insideStack.translatesAutoresizingMaskIntoConstraints = false
         topView.addSubview(insideStack)
-        
-
-        
     
         // Setting the NS Constraints for the stack view and all the UI elements
         NSLayoutConstraint.activate([
@@ -208,10 +201,6 @@ extension SignupPageView {
             // Stackview
             insideStack.topAnchor.constraint(equalTo: basketballImage.bottomAnchor, constant: 60),
             insideStack.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
-                        
-
-      
-            
         ])
     }
 }
@@ -237,40 +226,12 @@ func makeButton(withText text: String) -> UIButton {
     return button // Returning the created instance of the button
 }
 
-
-
-/*
- Using UIBezierPath
-    - addLine: Drawing Straight line
-    - addArc: Drawing any arch of the circle
-    - addCurve: Drawing any custom curve
- */
-func createBezierCurve() {
-    
-    
-}
-
 // MARK: UI Functions
-extension SignupPageView {
+extension SignupView {
     
     // Create the textfields
     public func createTextfield(text: String, imageName: String) -> UITextField {
         let textField = UITextField()
-        
-        // Initalizing the vector image
-        /*
-        let imageView = UIImageView(image: UIImage(systemName: imageName))
-        imageView.contentMode = .center
-        imageView.tintColor = .black
-                
-        // Setting the left view of the text field
-        // Setting the left view of the text field with padding
-        let paddingView = UIView(frame: CGRect(x: 20, y: 0, width: 40, height: 20)) // Adjust the width as needed
-        paddingView.addSubview(imageView)
-        
-        textField.leftView = paddingView
-        textField.leftViewMode = .always
-        */
         let image = UIImage(systemName: imageName)
         textField.setLeftView(image: image!)
         
@@ -289,6 +250,7 @@ extension SignupPageView {
         return textField
     }
     
+    // Initalizing textfield information
     func setTextFields() {
         usernameField = createTextfield(text: "Username",imageName: "person.fill")
         emailField = createTextfield(text: "Email Address", imageName: "note.text")
@@ -300,6 +262,7 @@ extension SignupPageView {
     
 }
 
+// Adding image to UITextfield
 extension UITextField {
   func setLeftView(image: UIImage) {
     let iconView = UIImageView(frame: CGRect(x: 10, y: 10, width: 25, height: 25)) // set your Own size
@@ -314,9 +277,11 @@ extension UITextField {
 
 
 //MARK: @objc functions
-extension SignupPageView {
+extension SignupView {
     
-    // When Sign Up Button is pressed
+    
+    
+    //MARK: Handling Signup
     @objc func signupPressed(_ sender: UIButton) {
         print("Signup Page Clicked")
         
@@ -331,7 +296,17 @@ extension SignupPageView {
         }
         
         // Sign up user through firebase
-        viewModel.handleSignup(email: email, password: password)
+        viewModel.handleSignup(email: email, password: password) { success, error in
+            if success {
+                print("Account Creation Worked")
+                self.signupToMainScreen() // Go to main screen
+            } else {
+                print("Error Creating account")
+                self.setErrorMessage(message: "Error Creating Account")
+            }
+            
+            
+        }
     }
     
     
@@ -347,7 +322,7 @@ extension SignupPageView {
 
 
 //MARK: Functions for UI Display
-extension SignupPageView {
+extension SignupView {
     
     func setErrorMessage(message: String) {
         // Initalizing the alert controller
@@ -365,7 +340,7 @@ extension SignupPageView {
 
 
 //MARK: Functions to handle View Controller Transitioning
-extension SignupPageView {
+extension SignupView {
     
     // Going from signup page to login page
     public func singupToLogin() {
@@ -384,7 +359,7 @@ extension SignupPageView {
 }
 
 //MARK: UITextField Delegates
-extension SignupPageView: UITextFieldDelegate {
+extension SignupView: UITextFieldDelegate {
 
     // This method is called when the return key is tapped
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -393,7 +368,7 @@ extension SignupPageView: UITextFieldDelegate {
     }
 }
 
-extension SignupPageView {
+extension SignupView {
     
     func addTapGestureRecongnition() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

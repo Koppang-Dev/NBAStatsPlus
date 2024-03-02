@@ -12,12 +12,14 @@ class SignupFirebaseViewModel {
     // Instance of model
     private let signupModel: SignupFirebaseModel
     
-    init(signupModel: SignupFirebaseModel) {
+    init(signupModel: SignupFirebaseModel = SignupFirebaseModel.shared) {
         self.signupModel = signupModel
     }
     
-    // Calls on the Model to handle the signup
-    func handleSignup(email: String, password: String) {
-        signupModel.handleSignup(email: email, password: password)
+    
+    // Handling User Signup
+    func handleSignup(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        // Call on model to perform the signup
+        SignupFirebaseModel.shared.handleSignup(email: email, password: password, completion: completion)
     }
 }
