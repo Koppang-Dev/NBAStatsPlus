@@ -90,8 +90,7 @@ extension AuthenticationTopView {
     }
 }
 
-
-// Shadow Extension
+//MARK: Shadow Extension
 extension AuthenticationTopView {
     func applyShadow() {
         self.layer.cornerRadius = 10

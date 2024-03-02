@@ -24,6 +24,8 @@
 		1001DF762B93C79D00435861 /* AuthenticationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF752B93C79D00435861 /* AuthenticationTopView.swift */; };
 		1001DF792B93C7FB00435861 /* SignupFirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF782B93C7FB00435861 /* SignupFirebaseModel.swift */; };
 		1001DF7B2B93C84200435861 /* LoginFirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */; };
+		1001DF7E2B93CA8700435861 /* SignupFirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7D2B93CA8700435861 /* SignupFirebaseViewModel.swift */; };
+		1001DF802B93CA9000435861 /* LoginFirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DF7F2B93CA9000435861 /* LoginFirebaseViewModel.swift */; };
 		822476ECD3CAA472D67540CA /* Pods_NBAStatsPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F1B06B403FD947ECF05C4D /* Pods_NBAStatsPlus.framework */; };
 		B2E0F0DDEF56D957ECA35F95 /* Pods_NBAStatsPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43AAB3415B791D34EE3F46A /* Pods_NBAStatsPlusTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +68,8 @@
 		1001DF752B93C79D00435861 /* AuthenticationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTopView.swift; sourceTree = "<group>"; };
 		1001DF782B93C7FB00435861 /* SignupFirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirebaseModel.swift; sourceTree = "<group>"; };
 		1001DF7A2B93C84200435861 /* LoginFirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseModel.swift; sourceTree = "<group>"; };
+		1001DF7D2B93CA8700435861 /* SignupFirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFirebaseViewModel.swift; sourceTree = "<group>"; };
+		1001DF7F2B93CA9000435861 /* LoginFirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseViewModel.swift; sourceTree = "<group>"; };
 		119268851FE1E6733FD64EDA /* Pods-NBAStatsPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus.release.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus/Pods-NBAStatsPlus.release.xcconfig"; sourceTree = "<group>"; };
 		1828C89FAD6C5E26C9B71289 /* Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus-NBAStatsPlusUITests/Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D47B5638D20A85732EA4286 /* Pods_NBAStatsPlus_NBAStatsPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAStatsPlus_NBAStatsPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +183,7 @@
 		1001DF682B93C2E600435861 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1001DF7C2B93CA7600435861 /* AuthenticationViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,6 +226,15 @@
 			path = AuthenticationModel;
 			sourceTree = "<group>";
 		};
+		1001DF7C2B93CA7600435861 /* AuthenticationViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1001DF7D2B93CA8700435861 /* SignupFirebaseViewModel.swift */,
+				1001DF7F2B93CA9000435861 /* LoginFirebaseViewModel.swift */,
+			);
+			path = AuthenticationViewModel;
+			sourceTree = "<group>";
+		};
 		52FAA02FFEA1208192E2BD3C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +245,6 @@
 				6BD6FF832299708AD95E8DA7 /* Pods-NBAStatsPlusTests.debug.xcconfig */,
 				D2869BA98EF732B49B306FF6 /* Pods-NBAStatsPlusTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -493,7 +506,9 @@
 				1001DF7B2B93C84200435861 /* LoginFirebaseModel.swift in Sources */,
 				1001DF6C2B93C32200435861 /* OnboardingView.swift in Sources */,
 				1001DF6E2B93C42800435861 /* PageViews.swift in Sources */,
+				1001DF802B93CA9000435861 /* LoginFirebaseViewModel.swift in Sources */,
 				1001DF362B93C27600435861 /* SceneDelegate.swift in Sources */,
+				1001DF7E2B93CA8700435861 /* SignupFirebaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

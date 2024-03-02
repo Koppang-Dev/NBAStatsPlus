@@ -14,13 +14,13 @@ class LoginView: UIViewController {
     
     // Lazy means the value is not calculated until the first time it is needed
     lazy var firebaseObj: LoginFirebaseModel = {
-           return LoginFirebase(loginPage: self)
+           return LoginFirebaseModel(loginPage: self)
        }()
        
     // Initalizing Top View
     let viewHelper = SignupPageUI()
     let viewStack = UIStackView()
-    let topView = SignupTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+    let topView = AuthenticationTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
     var emailField = UITextField()
     var passwordField = UITextField()
     
@@ -212,9 +212,9 @@ extension LoginView {
     }
     
     func loginToMainScreen() {
-        let vc = TabBarViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        //let vc = TabBarViewController()
+        //vc.modalPresentationStyle = .fullScreen
+        //self.present(vc, animated: true)
     }
 }
 

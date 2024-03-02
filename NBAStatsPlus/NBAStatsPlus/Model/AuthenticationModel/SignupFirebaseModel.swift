@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 
-class SignupFirebase {
+class SignupFirebaseModel {
     
     //MARK: Variables and Instances Declarations
     let signupView: SignupPageUI

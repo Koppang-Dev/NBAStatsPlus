@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 
-class LoginFirebase {
+class LoginFirebaseModel {
     
     //MARK: Variable Initalization
     weak var loginPage = LoginView()

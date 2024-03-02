@@ -8,34 +8,18 @@
 import Foundation
 import UIKit
 
-/*
- Class to allow user to log into their account
- Will be setting up FireBase Authentication
-    - Facebook, Twitter, Google, Apple, Email & Password
-    - Phone number authentication if possible
- */
 
-class SignupPageUI: UIViewController {
+class SignupPageView: UIViewController {
     
     //MARK: Variable Initalizing
-    let viewModel = SignupViewModel()
     let insideStack = UIStackView()
     var usernameField = UITextField()
+    var retypeField = UITextField()
+    var topView = AuthenticationTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500)) // Top View Initalization
     public var emailField = UITextField()
     public var passwordField = UITextField()
-    var retypeField = UITextField()
+    private var viewModel: SignupFirebaseViewModel! // Initalizing viewModel
     
-    // Firebase Instance
-    // Lazy means the value is not calculated until the first time it is needed
-    lazy var firebaseObj: SignupFirebase = {
-           return SignupFirebase(signupView: self)
-       }()
-       
-
-    
-    
-    // Initalizing the top view
-    var topView = SignupTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
     
     // Initalizing the basketball logo image
     private let basketballImage: UIImageView = {
@@ -126,13 +110,13 @@ class SignupPageUI: UIViewController {
 }
 
 // MARK: @objc functions
-extension SignupPageUI {
+extension SignupPageView {
     // Log In User
     @objc func loginButtonTapped(_ sender: UIButton) {
         // Creating instance of the mainViewController
-        let vc = TabBarViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+       // let vc = TabBarViewController()
+        //vc.modalPresentationStyle = .fullScreen
+        //self.present(vc, animated: true, completion: nil)
     }
     
     
@@ -267,7 +251,7 @@ func createBezierCurve() {
 }
 
 // MARK: UI Functions
-extension SignupPageUI {
+extension SignupPageView {
     
     // Create the textfields
     public func createTextfield(text: String, imageName: String) -> UITextField {
@@ -330,7 +314,7 @@ extension UITextField {
 
 
 //MARK: @objc functions
-extension SignupPageUI {
+extension SignupPageView {
     
     // When Sign Up Button is pressed
     @objc func signupPressed(_ sender: UIButton) {
@@ -347,7 +331,7 @@ extension SignupPageUI {
         }
         
         // Sign up user through firebase
-        firebaseObj.handleSignup(email: email, password: password)
+        viewModel.handleSignup(email: email, password: password)
     }
     
     
@@ -363,7 +347,7 @@ extension SignupPageUI {
 
 
 //MARK: Functions for UI Display
-extension SignupPageUI {
+extension SignupPageView {
     
     func setErrorMessage(message: String) {
         // Initalizing the alert controller
@@ -381,7 +365,7 @@ extension SignupPageUI {
 
 
 //MARK: Functions to handle View Controller Transitioning
-extension SignupPageUI {
+extension SignupPageView {
     
     // Going from signup page to login page
     public func singupToLogin() {
@@ -393,14 +377,14 @@ extension SignupPageUI {
     
     // Going from signup page to the Tab Bar Pages
     func signupToMainScreen() {
-        let vc = TabBarViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+      //  let vc = TabBarViewController()
+       // vc.modalPresentationStyle = .fullScreen
+       // self.present(vc, animated: true)
     }
 }
 
 //MARK: UITextField Delegates
-extension SignupPageUI: UITextFieldDelegate {
+extension SignupPageView: UITextFieldDelegate {
 
     // This method is called when the return key is tapped
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -409,7 +393,7 @@ extension SignupPageUI: UITextFieldDelegate {
     }
 }
 
-extension SignupPageUI {
+extension SignupPageView {
     
     func addTapGestureRecongnition() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
