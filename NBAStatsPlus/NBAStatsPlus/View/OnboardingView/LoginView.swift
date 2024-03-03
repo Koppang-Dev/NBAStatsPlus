@@ -12,11 +12,9 @@ class LoginView: UIViewController {
     
     //MARK: Initalizing Variables
     
-    // Lazy means the value is not calculated until the first time it is needed
-    lazy var firebaseObj: LoginFirebaseModel = {
-           return LoginFirebaseModel(loginPage: self)
-       }()
-       
+    
+    private var viewModel = LoginFirebaseViewModel() // Initalizing viewModel
+
     // Initalizing Top View
     let viewHelper = SignupView()
     let viewStack = UIStackView()
@@ -55,12 +53,8 @@ class LoginView: UIViewController {
         loginButton.backgroundColor = .systemOrange
         loginButton.layer.cornerRadius = 15
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        // When login button is tapped
-        loginButton.addTarget(self, action: #selector(loginPressed(_:)), for: .touchUpInside)
         return loginButton
     }()
-    
     
     
     // Initalizing the signup button
@@ -77,8 +71,6 @@ class LoginView: UIViewController {
         signupButton.setAttributedTitle(attributedString, for: .normal)
         signupButton.setTitleColor(.lightGray, for: .normal)
         
-        //When signup button is tapped
-        signupButton.addTarget(self, action: #selector(signupPressed(_:)), for: .touchUpInside)
         return signupButton
     }()
     
@@ -89,6 +81,7 @@ class LoginView: UIViewController {
         
         //MARK: Function Calls
         setTextFields()
+        addTargets()
         layout()
         addTapGestureRecongnition()
     }
@@ -101,7 +94,13 @@ class LoginView: UIViewController {
     }
     
     
-    func layout() {
+    private func addTargets() {
+        loginButton.addTarget(self, action: #selector(loginPressed(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(signupPressed(_:)), for: .touchUpInside)
+    }
+    
+    //MARK: Layout
+    private func layout() {
         // Top view
         view.addSubview(topView)
         topView.translatesAutoresizingMaskIntoConstraints = false
@@ -156,20 +155,30 @@ extension LoginView {
         self.present(vc, animated: true)
     }
     
+    //MARK: Login Handling
     @objc func loginPressed(_ sender: UIButton) {
         
-        print("User Attempts to login")
-        
-        // Checking if the email and password fields contain text
-        guard let email = emailField.text, !email.isEmpty,
-              let password = passwordField.text, !password.isEmpty else {
+        guard let email = emailField.text, !email.isEmpty, let password = passwordField.text, !password.isEmpty else {
+            // Email or Password textfield is empty
             print("Missing Data In The Fields")
             setErrorMessage(message: "Please Fill In The Required Fields")
             return
         }
         
-        // Check if the login information is correct
-       firebaseObj.handleLogin(email: email, password: password)
+        // Call ViewModel to handle login
+        viewModel.handleLogin(email: email, password: password) {success, error in
+            
+            if success {
+                // Login is successful, so transition to main screen
+                self.loginToMainScreen()
+            } else {
+                // There was an error
+                print("Error Creating account: \(error?.localizedDescription ?? "Unknown error")")
+                self.setErrorMessage(message: "Error Logging into Account")
+            }
+            
+            
+        }
     }
 }
 

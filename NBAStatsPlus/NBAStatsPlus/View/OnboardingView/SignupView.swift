@@ -18,7 +18,7 @@ class SignupView: UIViewController {
     var topView = AuthenticationTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500)) // Top View Initalization
     public var emailField = UITextField()
     public var passwordField = UITextField()
-    private var viewModel: SignupFirebaseViewModel! // Initalizing viewModel
+    private var viewModel = SignupFirebaseViewModel() // Initalizing viewModel
     
     
     // Initalizing the basketball logo image
@@ -60,7 +60,6 @@ class SignupView: UIViewController {
         signupButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         signupButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         signupButton.layer.cornerRadius = 15
-        signupButton.addTarget(self, action: #selector(signupPressed(_:)), for: .touchUpInside)
         return signupButton
     }()
     
@@ -79,7 +78,6 @@ class SignupView: UIViewController {
         loginButton.backgroundColor = .clear
         loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         loginButton.setTitleColor(.systemOrange, for: .normal)
-        loginButton.addTarget(self, action: #selector(loginPressed(_:)), for: .touchUpInside)
         return loginButton
     }()
     
@@ -97,6 +95,7 @@ class SignupView: UIViewController {
         
         //MARK: UI Function Calls
         setTextFields()
+        addTargets()
         layout()
         addTapGestureRecongnition()
     }
@@ -147,9 +146,13 @@ extension SignupView {
         textField.placeholder = text
         textField.layer.cornerRadius = 8
     }
-    
+    //MARK: Adding Targets to Buttons
+    private func addTargets() {
+        loginButton.addTarget(self, action: #selector(loginPressed(_:)), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(signupPressed(_:)), for: .touchUpInside)
+    }
     //MARK: Layout
-    func layout() {
+    private func layout() {
         
         // Top view
         view.addSubview(topView)
@@ -279,8 +282,6 @@ extension UITextField {
 //MARK: @objc functions
 extension SignupView {
     
-    
-    
     //MARK: Handling Signup
     @objc func signupPressed(_ sender: UIButton) {
         print("Signup Page Clicked")
@@ -301,11 +302,9 @@ extension SignupView {
                 print("Account Creation Worked")
                 self.signupToMainScreen() // Go to main screen
             } else {
-                print("Error Creating account")
+                print("Error Creating account: \(error?.localizedDescription ?? "Unknown error")")
                 self.setErrorMessage(message: "Error Creating Account")
             }
-            
-            
         }
     }
     
@@ -368,6 +367,7 @@ extension SignupView: UITextFieldDelegate {
     }
 }
 
+// MARK: Keyboard Functions
 extension SignupView {
     
     func addTapGestureRecongnition() {
