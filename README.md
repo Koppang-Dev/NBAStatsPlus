@@ -18,26 +18,26 @@ IOS that displays NBA data such as current game information, times of each game,
 
 * Entry View Controllers
 <div style="display: flex;">
-  <img src="images/entryViewControllerTwo.png" alt="Image 1" style="width: 200px; height: auto;">
-  <img src="images/entryViewControllerOne.png" alt="Image 2" style="width: 200px; height: auto;">
-  <img src="images/entryViewControllerThree.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/entryViewControllerTwo.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/entryViewControllerOne.png" alt="Image 2" style="width: 200px; height: auto;">
+  <img src="Images/entryViewControllerThree.png" alt="Image 1" style="width: 200px; height: auto;">
 </div>
 
 * Login and Signup screens
 <div style="display: flex;">
-  <img src="images/login.png" alt="Image 1" style="width: 200px; height: auto;">
-  <img src="images/signup.png" alt="Image 2" style="width: 200px; height: auto;">
+  <img src="Images/login.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/signup.png" alt="Image 2" style="width: 200px; height: auto;">
 </div>
 
 * Current Game Screen
-* [currentDayGame](images/currentDayGame.png)
-* ![selectedDayGame](images/selectedDayGame.png)
+* [currentDayGame](Images/currentDayGame.png)
+* ![selectedDayGame](Images/selectedDayGame.png)
 
 * Standings
 <div style="display: flex;">
-  <img src="images/east.png" alt="Image 1" style="width: 200px; height: auto;">
-  <img src="images/west.png" alt="Image 2" style="width: 200px; height: auto;">
-  <img src="images/league.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/east.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/west.png" alt="Image 2" style="width: 200px; height: auto;">
+  <img src="Images/league.png" alt="Image 1" style="width: 200px; height: auto;">
 </div>
 
 
