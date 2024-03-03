@@ -21,7 +21,12 @@ class SignupFirebaseModel {
         
         // Get Authentication Instance
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] result, error in
-        
+            
+            // Deallocates if self is nil
+            guard let strongSelf = self else {
+                return
+            }
+            
             if let error = error {
                 // Signup Failed
                 completion(false, error)

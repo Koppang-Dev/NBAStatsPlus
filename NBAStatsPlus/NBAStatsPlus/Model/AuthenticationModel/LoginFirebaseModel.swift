@@ -31,17 +31,11 @@ class LoginFirebaseModel {
             if let error = error {
                 // Error Signing Up
                 completion(false, error)
-                // Altering that information entered is not correct
-             //   strongSelf.loginPage?.setErrorMessage(message: "Email or Password Is Incorrect. Please Try Again")
             } else {
                 // Signing in worked!
                 print("The User Has Signed In")
                 completion(true, nil)
             }
-            
-            
-            // Sign the User In
-           // strongSelf.loginPage?.loginToMainScreen()
             
         })
     }
