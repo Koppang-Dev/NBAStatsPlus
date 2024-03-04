@@ -17,7 +17,7 @@ class GameListView: UIViewController {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
-        //tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
+        tableView.register(GameListViewCell.self, forCellReuseIdentifier: GameListViewCell.identifier)
         return tableView
     }()
     
@@ -82,7 +82,7 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
     
     // Number of games
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+      
         return 10
     }
     
@@ -90,6 +90,13 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
     
     // Specific cell information
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Creating Cell Instance
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GameListViewCell.identifier) as? GameListViewCell else {
+            fatalError("The TableView could not Dequeue a CustomCell in GamesViewController")
+        }
+        
+        return cell
+        
         
         
     }

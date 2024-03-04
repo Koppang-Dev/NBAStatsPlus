@@ -5,25 +5,16 @@
 //  Created by Riley on 2023-12-31.
 //
 
-/*
-
- */
-
 import UIKit
 
-class CustomCell: UITableViewCell {
+class GameListViewCell: UITableViewCell {
     
-    /*
-     Static indicates that the property is associated with the type itself rather than an instance of the type
-        - The variable belongs to the class and is called with the class name
-        - CustomCell.identifier
-     */
-    static let identifier = "CustomCell"
+    // Identifier to be used by TableView
+    static let identifier = "GameListCell"
     
+    //MARK: Variable Initalization
     
-    /*
-     Example of a closure to create and configure an instance of UIImageView()
-     */
+    // Home Team Image
     private let homeTeamImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -32,6 +23,7 @@ class CustomCell: UITableViewCell {
         return iv
     }()
     
+    // Away Team Image
     private let awayTeamImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -39,26 +31,29 @@ class CustomCell: UITableViewCell {
         iv.tintColor = .label // Colour depends on the interface style (dark vs light)
         return iv
     }()
-    
-    private let scoreLabel: UILabel = {
+
+   
+    // Home Team Score label
+    private let homeScoreLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.text = "Error" // Default text if not set
         return label
     }()
     
-    
-    private let myLabel: UILabel = {
+    // Away Team Score Label
+    private let awayScoreLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         label.text = "Error" // Default text if not set
         return label
     }()
     
+    // Game time label
     private let gameTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -68,6 +63,7 @@ class CustomCell: UITableViewCell {
         return label
     }()
     
+    // Home team name
     private let homeTeamLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -77,6 +73,7 @@ class CustomCell: UITableViewCell {
         return label
     }()
     
+    // Away team name
     private let awayTeamLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -86,11 +83,31 @@ class CustomCell: UITableViewCell {
         return label
     }()
     
+    // Status Label (Ex. "VS" "Final" "88-52"
+    private let statusLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.text = "Error" // Default text if not set
+        label.adjustsFontSizeToFitWidth =  true
+        return label
+    }()
     
-    /*
-     Method is the initalizer for the custom UITabelView subclass
-     
-     */
+    // Full Score Label (55 vs 72)
+    private let fullScore: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.text = "Error" // Default text if not set
+        label.adjustsFontSizeToFitWidth =  true
+        return label
+    }()
+    
+    
+    
+    // Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupUI()
@@ -101,67 +118,47 @@ class CustomCell: UITableViewCell {
     }
     
     
-    public func configure(homeTeamImage: UIImage, awayTeamImage: UIImage, label: String) {
+    // Setting Team Images
+    func configureTeamImages(homeTeamImage: UIImage, awayTeamImage: UIImage) {
         self.homeTeamImageView.image = homeTeamImage
         self.awayTeamImageView.image = awayTeamImage
-        self.myLabel.text = label
     }
     
-    // Initalizing the team names to be placed under the team's logo
-    public func configureTeamNames(homeTeamName: String, awayTeamName: String) {
+    
+    // Setting Team Names
+    func configureTeamNames(homeTeamName: String, awayTeamName: String) {
         homeTeamLabel.text = homeTeamName
         homeTeamLabel.adjustsFontSizeToFitWidth = true
         awayTeamLabel.text = awayTeamName
         awayTeamLabel.adjustsFontSizeToFitWidth = true
     }
     
-    public func configureScore(homeTeamScore: Int, awayTeamScore: Int, gameStartTime: String?, period: String) {
-        
-        // If the game has not started
-        if (homeTeamScore == -1 && awayTeamScore == -1) {
-            scoreLabel.text = gameStartTime
-            scoreLabel.adjustsFontSizeToFitWidth = true
-            
-        // The game is currently underway
-        } else {
-            
-            /*
-             Creating an attributed string
-             "Final" will be a smaller font then the final game scores
-             */
-            let attributedText = NSMutableAttributedString()
-
-            // Add home team score with a larger font
-            let homeTeamScoreString = NSAttributedString(string: "\(homeTeamScore) ", attributes: [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23, weight: .bold)
-            ])
-            attributedText.append(homeTeamScoreString)
-
-            // Add "FINAL" with a smaller font
-            
-            if period == "Final" {
-                let finalString = NSAttributedString(string: "FINAL ", attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)
-                ])
-                attributedText.append(finalString)
-            } else {
-                let finalString = NSAttributedString(string: "VS ", attributes: [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)
-                ])
-                attributedText.append(finalString)
-            }
-
-            // Add away team score with a larger font
-            let awayTeamScoreString = NSAttributedString(string: "\(awayTeamScore)", attributes: [
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 23, weight: .bold)
-            ])
-            attributedText.append(awayTeamScoreString)
-
-            // Set the attributed text to the label
-            scoreLabel.attributedText = attributedText
-        }
+    // Setting the score
+    func configureScore(homeTeamScore: Int, awayTeamScore: Int) {
+        self.homeScoreLabel.text = String(homeTeamScore)
+        self.awayScoreLabel.text = String(awayTeamScore)
     }
     
+    // Setting the status label
+    func configureStatus(gameStartTime: String, period: String, started: Bool) {
+        if !started {
+            // Game has not started yet
+            statusLabel.text = gameStartTime
+        } else {
+            // Game has started
+            if period == "Final" {
+                // Game is over
+                statusLabel.text = "Final"
+            } else {
+                // Game is currently underway
+                statusLabel.text = "VS"
+            }
+        }
+        
+        // Concatenating the score labels
+        fullScore.text = ("\(homeScoreLabel) + \(statusLabel) + \(awayTeamLabel)")
+        
+    }
     
     
     
@@ -177,8 +174,8 @@ class CustomCell: UITableViewCell {
         homeTeamLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Score Label
-        self.contentView.addSubview(scoreLabel)
-        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(fullScore)
+        fullScore.translatesAutoresizingMaskIntoConstraints = false
         
         // Away Team Image
         self.contentView.addSubview(awayTeamImageView)
@@ -189,20 +186,8 @@ class CustomCell: UITableViewCell {
         awayTeamLabel.translatesAutoresizingMaskIntoConstraints = false
         
         
-        
+        // Manually Setting Constraints
         NSLayoutConstraint.activate([
-            
-            /* Setting the constraints for the ImageView */
-            
-            /*
-             Content View:
-                - Property of the UITableViewCell
-                - Represents the primary container view for the content of a table view cell
-             LayoutMarginsGuide:
-                - Represents an area inside the view's bounds that is reserved for layout margins
-             */
-            
-            
             
             // Home Team Image View
             homeTeamImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
@@ -219,12 +204,12 @@ class CustomCell: UITableViewCell {
             homeTeamLabel.widthAnchor.constraint(equalToConstant: 60),
             
             // Score Label
-            scoreLabel.leadingAnchor.constraint(equalTo: self.homeTeamImageView.trailingAnchor, constant: 16),
-            scoreLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
-            scoreLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            scoreLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            scoreLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            scoreLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            fullScore.leadingAnchor.constraint(equalTo: self.homeTeamImageView.trailingAnchor, constant: 16),
+            fullScore.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
+            fullScore.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            fullScore.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            fullScore.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            fullScore.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             
             // Away Team Image View
             awayTeamImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
@@ -241,8 +226,5 @@ class CustomCell: UITableViewCell {
             awayTeamLabel.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
-    
-    
-    
 }
 
