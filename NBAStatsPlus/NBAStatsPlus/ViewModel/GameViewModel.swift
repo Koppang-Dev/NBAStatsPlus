@@ -16,8 +16,13 @@ class GameViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: date)
-        let apiUrl = "https://www.balldontlie.io/api/v1/games?dates[]=\(dateString)"
         
+        
+        let currentDate = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd" // Converting to this date format
+        let todayDateString = dateFormatter.string(from: currentDate)
+        let apiUrl = "https://www.balldontlie.io/api/v1/games?dates[]=\(todayDateString)"
+                
         // Fetch API information from Service Layer
         GameAPIService.shared.fetchGameInformation(URL: apiUrl, completion: {gameListResponse in
             
@@ -32,5 +37,4 @@ class GameViewModel {
         })
     }
 }
-
 

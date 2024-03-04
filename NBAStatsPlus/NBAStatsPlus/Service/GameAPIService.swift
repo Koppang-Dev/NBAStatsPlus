@@ -22,9 +22,15 @@ class GameAPIService {
             return
         }
         
+        let apiKey = "56b9282f-7bf4-419f-9cc3-288484501f2e"
+        // Creating API Request
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(apiKey , forHTTPHeaderField: "Authorization")
+        
         // Starting URL Session
         let session = URLSession.shared
-        let dataTask = session.dataTask(with: url) {data, response, error in
+        let dataTask = session.dataTask(with: request) {data, response, error in
             
             // Check for errors
             if let error = error {
@@ -39,6 +45,13 @@ class GameAPIService {
                 completion(nil)
                 return
             }
+            
+            // Print raw data as string
+             if let dataString = String(data: data, encoding: .utf8) {
+                 print("Raw data received: \(dataString)")
+             } else {
+                 print("Unable to convert data to string")
+             }
             
             // Decode
             do {

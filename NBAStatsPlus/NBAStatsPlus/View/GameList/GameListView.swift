@@ -49,6 +49,7 @@ class GameListView: UIViewController {
         
         //MARK: Function Calls
         setupUI()
+        fetchGameInformation()
     }
     
     //MARK: SetupUI
@@ -87,7 +88,7 @@ class GameListView: UIViewController {
             guard let self = self else {return}
             
             // Check for errors
-            if let error = error {
+            if error != nil {
                 print("Error fetching data")
                 return
             } else if let games = games {
@@ -126,10 +127,4 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-}
-
-
-//MARK: Tableview Helper Functions
-extension GameListView {
-    
 }
