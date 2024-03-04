@@ -13,9 +13,6 @@ public class APICaller {
     public static let shared = APICaller()
     private init() {}
     
-    public func fetchGameInformation() {
-        
-    }
 
     
     
