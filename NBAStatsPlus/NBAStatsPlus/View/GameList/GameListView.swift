@@ -10,6 +10,15 @@ import UIKit
 
 class GameListView: UIViewController {
     
+    //MARK: Properties
+    private let gameViewModel = GameViewModel() // ViewModel Instance
+
+    private var gameData: [GameInformation] = [] {
+        didSet {
+            tableView.reloadData() // Reload the table view whenever gameData is updated
+        }
+    }
+    
     //MARK: Initalizing UIComponents
     
     // Table View
@@ -20,7 +29,6 @@ class GameListView: UIViewController {
         tableView.register(GameListViewCell.self, forCellReuseIdentifier: GameListViewCell.identifier)
         return tableView
     }()
-    
     
     // Date Picker
     let datePicker: UIDatePicker = {
@@ -33,7 +41,6 @@ class GameListView: UIViewController {
         return datePicker
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,11 +49,9 @@ class GameListView: UIViewController {
         
         //MARK: Function Calls
         setupUI()
-        
     }
     
-    
-    
+    //MARK: SetupUI
     private func setupUI() {
         self.view.backgroundColor = .white
         
@@ -54,11 +59,9 @@ class GameListView: UIViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        
         // Date Picker
         view.addSubview(datePicker)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
-        
         
         // Manually Setting Constraints
         NSLayoutConstraint.activate([
@@ -74,6 +77,25 @@ class GameListView: UIViewController {
             datePicker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
+    
+    //MARK: Fetch Game Information
+    private func fetchGameInformation() {
+        let currentDate = Date()
+        
+        gameViewModel.fetchGameData(forDate: currentDate) { [weak self] games, error in
+            // Check if self has been deallocated
+            guard let self = self else {return}
+            
+            // Check for errors
+            if let error = error {
+                print("Error fetching data")
+                return
+            } else if let games = games {
+                // Game information is available
+                self.gameData = games
+            }
+        }
+    }
 }
 
 
@@ -82,10 +104,8 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
     
     // Number of games
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-        return 10
+        return gameData.count
     }
-    
     
     
     // Specific cell information
@@ -94,6 +114,20 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GameListViewCell.identifier) as? GameListViewCell else {
             fatalError("The TableView could not Dequeue a CustomCell in GamesViewController")
         }
+        
+        // Current Game Information
+        let game = gameData[indexPath.row]
+                
+        // Setting Cell Information
+        cell.configureScore(homeTeamScore: game.home_team_score, awayTeamScore: game.visitor_team_score)
+        cell.configureStatus(gameStartTime: game.status, period: game.period, started: true)
+        cell.configureTeamNames(homeTeamName: game.home_team.name, awayTeamName: game.visitor_team.name)
+        cell.configureTeamImages(homeTeamImage: UIImage(named: game.visitor_team.name)!, awayTeamImage: UIImage(named: game.visitor_team.name)!)
+        
+        
+        
+        
+        
         
         return cell
         
