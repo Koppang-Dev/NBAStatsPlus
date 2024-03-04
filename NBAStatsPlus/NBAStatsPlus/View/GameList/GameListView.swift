@@ -117,25 +117,19 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         
         // Current Game Information
         let game = gameData[indexPath.row]
-                
+        
         // Setting Cell Information
         cell.configureScore(homeTeamScore: game.home_team_score, awayTeamScore: game.visitor_team_score)
-        cell.configureStatus(gameStartTime: game.status, period: game.period, started: true)
+        cell.configureStatus(gameStartTime: game.status, period: game.period, periodTime: game.time)
         cell.configureTeamNames(homeTeamName: game.home_team.name, awayTeamName: game.visitor_team.name)
         cell.configureTeamImages(homeTeamImage: UIImage(named: game.visitor_team.name)!, awayTeamImage: UIImage(named: game.visitor_team.name)!)
         
-        
-        
-        
-        
-        
         return cell
-        
-        
-        
     }
-    
-    
-  
+}
+
+
+//MARK: Tableview Helper Functions
+extension GameListView {
     
 }

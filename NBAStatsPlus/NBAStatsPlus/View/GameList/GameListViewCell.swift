@@ -140,26 +140,24 @@ class GameListViewCell: UITableViewCell {
     }
     
     // Setting the status label
-    func configureStatus(gameStartTime: String, period: String, started: Bool) {
-        if !started {
-            // Game has not started yet
+    func configureStatus(gameStartTime: String, period: Int, periodTime: String) {
+    
+        if period == 0 {
+            // Game has not started
             statusLabel.text = gameStartTime
         } else {
-            // Game has started
-            if period == "Final" {
-                // Game is over
+            if periodTime == " " {
+                // Game is over (Empty string means game is over)
                 statusLabel.text = "Final"
             } else {
-                // Game is currently underway
+                // Game is currently Underway
                 statusLabel.text = "VS"
             }
         }
         
         // Concatenating the score labels
         fullScore.text = ("\(homeScoreLabel) + \(statusLabel) + \(awayTeamLabel)")
-        
     }
-    
     
     
     // Function for setting the custom cell UI
@@ -184,7 +182,6 @@ class GameListViewCell: UITableViewCell {
         // Away Team Name
         self.contentView.addSubview(awayTeamLabel)
         awayTeamLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         
         // Manually Setting Constraints
         NSLayoutConstraint.activate([
