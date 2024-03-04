@@ -35,8 +35,8 @@ class SignupFirebaseModel {
                 completion(true, nil)
             }
         })
-    
+        
     }
-
+    
 }
 

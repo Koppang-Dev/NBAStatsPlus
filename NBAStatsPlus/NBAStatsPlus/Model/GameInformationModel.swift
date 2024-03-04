@@ -11,6 +11,12 @@ import Foundation
 struct GameListResponse: Decodable {
     let data: [GameInformation]
     let meta: MetaInformation?
+    
+    // Convenience Initalizer
+    init() {
+        self.data = []
+        self.meta = nil
+    }
 }
 
 // Object that contains specific information about the Meta Data

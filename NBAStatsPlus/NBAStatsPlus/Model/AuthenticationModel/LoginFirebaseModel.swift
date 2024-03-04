@@ -21,12 +21,7 @@ class LoginFirebaseModel {
     func handleLogin(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         
         // Trying to sign in the user
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] result, error in
-            
-            // Deallocates if self is nil
-            guard let strongSelf = self else {
-                return
-            }
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
     
             if let error = error {
                 // Error Signing Up
