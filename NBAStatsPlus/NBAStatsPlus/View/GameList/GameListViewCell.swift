@@ -42,7 +42,7 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .systemFont(ofSize: 25, weight: .bold)
         label.text = "" // Default text if not set
         return label
     }()
@@ -52,7 +52,7 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .systemFont(ofSize: 25, weight: .bold)
         label.text = "" // Default text if not set
         return label
     }()

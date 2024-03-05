@@ -40,7 +40,6 @@ class GameListView: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .compact
         datePicker.tintColor = .systemBlue
-        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: UIControl.Event.valueChanged)
         return datePicker
     }()
     
@@ -52,6 +51,7 @@ class GameListView: UIViewController {
         
         //MARK: Function Calls
         setupUI()
+        addTargets()
         fetchGameInformation()
         setupRefreshControls()
     }
@@ -81,6 +81,10 @@ class GameListView: UIViewController {
             datePicker.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: -15),
             datePicker.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+    }
+    
+    private func addTargets() {
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
     }
     
     //MARK: Fetch Game Information
