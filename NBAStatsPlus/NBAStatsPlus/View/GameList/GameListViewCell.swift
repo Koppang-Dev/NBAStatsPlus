@@ -149,18 +149,20 @@ class GameListViewCell: UITableViewCell {
         if period == 0 {
             // Game has not started
             statusLabel.text = gameViewModel.modifyDateFormat(dateInput: gameStartTime)
-            fullScore.text = statusLabel.text
+            homeScoreLabel.isHidden = true
+            awayScoreLabel.isHidden = true
         } else {
-            if periodTime == nil {
+            // Game is/has happened
+            homeScoreLabel.isHidden = false
+            awayScoreLabel.isHidden = false
+            
+            if periodTime == "Final" {
                 // Game is over (Empty string means game is over)
                 statusLabel.text = "Final"
             } else {
                 // Game is currently Underway
                 statusLabel.text = "VS"
             }
-            
-            // Include game scores and status label
-            fullScore.text = "\(homeScoreLabel.text ?? "") \(statusLabel.text ?? "") \(awayScoreLabel.text ?? "")"
         }
     }
     
@@ -176,10 +178,6 @@ class GameListViewCell: UITableViewCell {
         self.contentView.addSubview(homeTeamLabel)
         homeTeamLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        // Score Label
-        self.contentView.addSubview(fullScore)
-        fullScore.translatesAutoresizingMaskIntoConstraints = false
-        
         // Away Team Image
         self.contentView.addSubview(awayTeamImageView)
         awayTeamImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -187,6 +185,18 @@ class GameListViewCell: UITableViewCell {
         // Away Team Name
         self.contentView.addSubview(awayTeamLabel)
         awayTeamLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Status Label
+        self.contentView.addSubview(statusLabel)
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Home Score
+        self.contentView.addSubview(homeScoreLabel)
+        homeScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Away Score
+        self.contentView.addSubview(awayScoreLabel)
+        awayScoreLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Manually Setting Constraints
         NSLayoutConstraint.activate([
@@ -205,13 +215,21 @@ class GameListViewCell: UITableViewCell {
             homeTeamLabel.heightAnchor.constraint(equalToConstant: 25),
             homeTeamLabel.widthAnchor.constraint(equalToConstant: 60),
             
-            // Score Label
-            fullScore.leadingAnchor.constraint(equalTo: self.homeTeamImageView.trailingAnchor, constant: 16),
-            fullScore.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
-            fullScore.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            fullScore.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            fullScore.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            fullScore.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            // Status Label
+            statusLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            statusLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            statusLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            
+            // Home Score
+            homeScoreLabel.trailingAnchor.constraint(equalTo: statusLabel.leadingAnchor, constant: -16),
+            homeScoreLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            homeScoreLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            
+            // Away Score
+            awayScoreLabel.leadingAnchor.constraint(equalTo: statusLabel.trailingAnchor, constant: 16),
+            awayScoreLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            awayScoreLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            
             
             // Away Team Image View
             awayTeamImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
