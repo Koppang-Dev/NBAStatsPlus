@@ -13,15 +13,12 @@ class GameViewModel {
     // Gets Game API data for current date
     func fetchGameData(forDate date: Date, completion: @escaping ([GameInformation]?, Error?) -> Void) {
         // Relevent Data Information and Formatting
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: date)
-        
-        
+            
         let currentDate = Date()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd" // Converting to this date format
         let todayDateString = dateFormatter.string(from: currentDate)
-        let apiUrl = "https://www.balldontlie.io/api/v1/games?dates[]=\(todayDateString)"
+        let apiUrl = "https://api.balldontlie.io/v1/games?dates[]=\(todayDateString)"
                 
         // Fetch API information from Service Layer
         GameAPIService.shared.fetchGameInformation(URL: apiUrl, completion: {gameListResponse in

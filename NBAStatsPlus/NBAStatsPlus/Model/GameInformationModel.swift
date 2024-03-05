@@ -21,7 +21,7 @@ struct GameListResponse: Decodable {
 
 // Object that contains specific information about the Meta Data
 struct MetaInformation: Decodable {
-    let current_page: Int
+   // let current_page: Int
     let next_page: Int?
     let per_page: Int
 }
@@ -35,7 +35,7 @@ struct GameInformation: Decodable {
     let season: Int
     let period: Int
     let status: String
-    let time: String // Optional becomes some games start later
+    let time: String? // Optional becomes some games start later
     let postseason: Bool
     let home_team: TeamInformation
     let visitor_team: TeamInformation

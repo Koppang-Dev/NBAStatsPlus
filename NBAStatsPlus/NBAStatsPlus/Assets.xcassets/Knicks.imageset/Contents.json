@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "vecteezy_new-york-knicks-logo-on-transparent-background_15863700.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

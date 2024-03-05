@@ -15,7 +15,10 @@ class GameListView: UIViewController {
 
     private var gameData: [GameInformation] = [] {
         didSet {
-            tableView.reloadData() // Reload the table view whenever gameData is updated
+            DispatchQueue.main.async {
+                // Tableview has to be reloaded using the main thread
+                self.tableView.reloadData() // Reload the table view whenever gameData is updated
+            }
         }
     }
     
@@ -123,7 +126,7 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         cell.configureScore(homeTeamScore: game.home_team_score, awayTeamScore: game.visitor_team_score)
         cell.configureStatus(gameStartTime: game.status, period: game.period, periodTime: game.time)
         cell.configureTeamNames(homeTeamName: game.home_team.name, awayTeamName: game.visitor_team.name)
-        cell.configureTeamImages(homeTeamImage: UIImage(named: game.visitor_team.name)!, awayTeamImage: UIImage(named: game.visitor_team.name)!)
+        cell.configureTeamImages(homeTeamImage: UIImage(named: game.home_team.name)!, awayTeamImage: UIImage(named: game.visitor_team.name)!)
         
         return cell
     }

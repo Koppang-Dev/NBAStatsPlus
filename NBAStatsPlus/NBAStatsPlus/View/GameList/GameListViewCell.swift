@@ -140,13 +140,13 @@ class GameListViewCell: UITableViewCell {
     }
     
     // Setting the status label
-    func configureStatus(gameStartTime: String, period: Int, periodTime: String) {
+    func configureStatus(gameStartTime: String, period: Int, periodTime: String?) {
     
         if period == 0 {
             // Game has not started
             statusLabel.text = gameStartTime
         } else {
-            if periodTime == " " {
+            if periodTime == nil {
                 // Game is over (Empty string means game is over)
                 statusLabel.text = "Final"
             } else {
