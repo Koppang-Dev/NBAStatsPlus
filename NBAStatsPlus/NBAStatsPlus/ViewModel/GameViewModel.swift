@@ -14,10 +14,9 @@ class GameViewModel {
     func fetchGameData(forDate date: Date, completion: @escaping ([GameInformation]?, Error?) -> Void) {
         // Relevent Data Information and Formatting
             
-        let currentDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd" // Converting to this date format
-        let todayDateString = dateFormatter.string(from: currentDate)
+        let todayDateString = dateFormatter.string(from: date)
         let apiUrl = "https://api.balldontlie.io/v1/games?dates[]=\(todayDateString)"
                 
         // Fetch API information from Service Layer
@@ -33,5 +32,25 @@ class GameViewModel {
             }
         })
     }
+    
+    
+    
+    // Modifies the Date Format of the retrieved game
+    func modifyDateFormat(dateInput: String) -> String? {
+        var outputDate = " "
+        
+        // Date format from API
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let date = dateFormatter.date(from: dateInput) {
+            // Set the output format for the time
+            dateFormatter.dateFormat = "h:mm a"
+            outputDate = dateFormatter.string(from: date)
+        }
+
+        return outputDate
+    }
+    
 }
 

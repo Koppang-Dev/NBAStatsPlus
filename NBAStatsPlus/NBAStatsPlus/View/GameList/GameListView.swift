@@ -28,7 +28,7 @@ class GameListView: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         tableView.register(GameListViewCell.self, forCellReuseIdentifier: GameListViewCell.identifier)
         return tableView
     }()
@@ -40,7 +40,7 @@ class GameListView: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .compact
         datePicker.tintColor = .systemBlue
-        // datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: UIControl.Event.valueChanged)
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: UIControl.Event.valueChanged)
         return datePicker
     }()
     
@@ -53,6 +53,7 @@ class GameListView: UIViewController {
         //MARK: Function Calls
         setupUI()
         fetchGameInformation()
+        setupRefreshControls()
     }
     
     //MARK: SetupUI
@@ -83,8 +84,9 @@ class GameListView: UIViewController {
     }
     
     //MARK: Fetch Game Information
-    private func fetchGameInformation() {
-        let currentDate = Date()
+    func fetchGameInformation(forDate date: Date? = nil) {
+        // Data is defaulted to nil
+        let currentDate = date ?? Date()
         
         gameViewModel.fetchGameData(forDate: currentDate) { [weak self] games, error in
             // Check if self has been deallocated
@@ -111,7 +113,6 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         return gameData.count
     }
     
-    
     // Specific cell information
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Creating Cell Instance
@@ -128,6 +129,36 @@ extension GameListView: UITableViewDataSource, UITableViewDelegate {
         cell.configureTeamNames(homeTeamName: game.home_team.name, awayTeamName: game.visitor_team.name)
         cell.configureTeamImages(homeTeamImage: UIImage(named: game.home_team.name)!, awayTeamImage: UIImage(named: game.visitor_team.name)!)
         
+        // Returning cell
         return cell
     }
+}
+
+
+
+//MARK: Refresh Control Initalization
+extension GameListView {
+    
+    // Adding refresh control to UI
+    func setupRefreshControls() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Updating NBA Scores")
+        refreshControl.addTarget(self, action: #selector(refreshTriggered(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    // Handling when refresh is triggered
+    @objc func refreshTriggered(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+}
+
+//MARK: Data Changer Functions
+extension GameListView {
+    
+    @objc func dateChanged(_ sender: UIDatePicker) {
+        fetchGameInformation(forDate: sender.date)
+    }
+    
 }

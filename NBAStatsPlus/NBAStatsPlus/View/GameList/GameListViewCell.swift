@@ -9,8 +9,12 @@ import UIKit
 
 class GameListViewCell: UITableViewCell {
     
+    // View Model instance
+    private let gameViewModel = GameViewModel()
+    
     // Identifier to be used by TableView
     static let identifier = "GameListCell"
+    
     
     //MARK: Variable Initalization
     
@@ -39,7 +43,7 @@ class GameListViewCell: UITableViewCell {
         label.textColor = .label
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.text = "Error" // Default text if not set
+        label.text = "" // Default text if not set
         return label
     }()
     
@@ -49,7 +53,7 @@ class GameListViewCell: UITableViewCell {
         label.textColor = .label
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.text = "Error" // Default text if not set
+        label.text = "" // Default text if not set
         return label
     }()
     
@@ -144,7 +148,8 @@ class GameListViewCell: UITableViewCell {
     
         if period == 0 {
             // Game has not started
-            statusLabel.text = gameStartTime
+            statusLabel.text = gameViewModel.modifyDateFormat(dateInput: gameStartTime)
+            fullScore.text = statusLabel.text
         } else {
             if periodTime == nil {
                 // Game is over (Empty string means game is over)
@@ -153,10 +158,10 @@ class GameListViewCell: UITableViewCell {
                 // Game is currently Underway
                 statusLabel.text = "VS"
             }
+            
+            // Include game scores and status label
+            fullScore.text = "\(homeScoreLabel.text ?? "") \(statusLabel.text ?? "") \(awayScoreLabel.text ?? "")"
         }
-        
-        // Concatenating the score labels
-        fullScore.text = ("\(homeScoreLabel) + \(statusLabel) + \(awayTeamLabel)")
     }
     
     
