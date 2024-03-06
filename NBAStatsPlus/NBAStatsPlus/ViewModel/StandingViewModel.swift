@@ -13,13 +13,14 @@ class StandingViewModel {
     var easternStandingsList: [StandingInformation] = []
     var westernStandingsList: [StandingInformation] = []
     var leagueStandingsList: [StandingInformation] = []
+    var selectedConferenceList: [StandingInformation] = [] // Changed to selected conference
     
     
     //MARK: API Standings Fetch
     func fetchStandingsInformation(completion: @escaping (StandingResponse?, Error?) -> Void) {
         
         // API Information
-        let url = "http://localhost:3000/api.php"
+        let url = "http://localhost:3000/StandingsAPI.php"
         
         // Fetch API Data from service layer
         StandingAPIService.sharedStandingAPI.fetchGameInformation(URL: url) { standingsResponse in
@@ -38,6 +39,11 @@ class StandingViewModel {
                 }
                 // Sort the league standings list
                 self.leagueStandingsList = self.mergeSortLeagueStandings(league: self.leagueStandingsList)
+                
+                // Initalize eastern conference as the default
+                self.selectedConferenceList = self.easternStandingsList
+                
+                // Sending results back
                 completion(standingsResponse, nil)
             } else {
                 completion(nil, NSError(domain: "YourDomain", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch standings data"]))

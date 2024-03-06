@@ -28,7 +28,7 @@ class StandingAPIService {
         let dataTask = session.dataTask(with: url) {data, response, error in
             // Check for errors
             if let error = error {
-                print("Error retrieving Standings Information")
+                print("Error retrieving Standings Information", error)
                 completion(nil)
                 return
             }
@@ -40,9 +40,16 @@ class StandingAPIService {
                 return
             }
             
+            // Raw Data
+            let dataString = String(data: data, encoding: .utf8)
+            print("Raw Data Received: \(dataString ?? "Unable to decode raw data")")
+
+            
             // Decoding Information
             do {
-                let parsingData = try JSONDecoder().decode(StandingResponse.self, from: data)
+                let parsingData = try JSONDecoder().decode([StandingInformation].self, from: data)
+                // Standing Response be initalized with the standing information array
+                completion(StandingResponse(standing: parsingData))
             } catch {
                 print("Error Parsing JSON data")
                 completion(nil)

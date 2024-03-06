@@ -102,6 +102,7 @@ class StandingView: UIViewController {
         
         //MARK: Function Calls
         setupUI()
+        addTargets()
         fetchStandingsInformation()
     }
     
@@ -176,7 +177,11 @@ class StandingView: UIViewController {
                 print("Error Fetching Standing Information:", error)
                 return
             } else if let standingResponse = standingResponse {
-                print("Standings Fetched Successfully")
+                // Standings Fetched Successfully
+                DispatchQueue.main.async {
+                    // Using main thread to reload tableview
+                    self.tableView.reloadData()
+                }
             }
         })
         
@@ -186,8 +191,6 @@ class StandingView: UIViewController {
     private func addTargets() {
         segmentControl.addTarget(self, action: #selector(standingsTabChanged(_:)), for: .valueChanged)
     }
-    
-    
 }
 
 //MARK: @objc functions
@@ -201,18 +204,22 @@ extension StandingView {
             // Eastern Conference Selected
         case 0:
             currentConference = "Eastern"
+            standingViewModel.selectedConferenceList = standingViewModel.easternStandingsList
             tableView.reloadData()
         case 1:
             currentConference = "Western"
+            standingViewModel.selectedConferenceList = standingViewModel.westernStandingsList
             tableView.reloadData()
             break
         case 2:
             currentConference = "League"
+            standingViewModel.selectedConferenceList = standingViewModel.leagueStandingsList
             tableView.reloadData()
             break
         default:
             currentConference = "Eastern"
-            print("Eastern Conference is selected")
+            standingViewModel.selectedConferenceList = standingViewModel.easternStandingsList
+            tableView.reloadData()
         }
     }
 
@@ -244,12 +251,17 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StandingCell.identifier) as? StandingCell else {
             fatalError("The TableView could not Dequeue a CustomCell in StandingView")
         }
-        
+
         // Current Standings Information
+        cell.setTeamName(teamName: standingViewModel.selectedConferenceList[indexPath.row].NAME)
+        cell.setTeamImage(image: UIImage(named: standingViewModel.selectedConferenceList[indexPath.row].NAME)!)
+        cell.setWinsLosses(wins: Int(standingViewModel.selectedConferenceList[indexPath.row].wins)!,
+                           losses: Int(standingViewModel.selectedConferenceList[indexPath.row].loses)!)
+        cell.setRankingNumber(currentRowNumber: indexPath.row + 1)
+        cell.setGamesBack(gamesBack: Float(standingViewModel.selectedConferenceList[indexPath.row].games_back)!)
+        cell.setWinPercent(winPercent: Float(standingViewModel.selectedConferenceList[indexPath.row].winpercent)!)
         
-        
-        
-        
+        // Returning finished cell
         return cell
         
         
