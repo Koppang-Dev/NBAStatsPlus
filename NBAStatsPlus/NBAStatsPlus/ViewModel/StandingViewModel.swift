@@ -10,10 +10,22 @@ import Foundation
 class StandingViewModel {
     
     //MARK: API Standings Fetch
-    func fetchStandingsInformation(URL url: String, completion: @escaping ((StandingResponse?), Error?) -> Void) {
+    func fetchStandingsInformation(completion: @escaping ((StandingResponse?), Error?) -> Void) {
         
+        // API Information
+        let url = "http://localhost:3000/api.php"
         
-        
+        // Fetch API Data from servie layer
+        StandingAPIService.sharedStandingAPI.fetchGameInformation(URL: url, completion: {standingResponse in
+            
+            if let standingReponse = standingResponse {
+                // Data was retrieved
+                completion(standingReponse.self, nil)
+            } else {
+                let error = NSError(domain: "YourDomain", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch standings data"])
+                completion(nil, error)
+            }
+        })
     }
     
     

@@ -10,7 +10,7 @@ import Foundation
 class GameAPIService {
     
     // Creating Singleton Instance
-    public static let shared = GameAPIService()
+    public static let sharedGameAPI = GameAPIService()
     private init() {}
     
     public func fetchGameInformation(URL url: String, completion: @escaping (GameListResponse?) ->Void) {

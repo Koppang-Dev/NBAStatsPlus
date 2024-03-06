@@ -20,7 +20,7 @@ class GameViewModel {
         let apiUrl = "https://api.balldontlie.io/v1/games?dates[]=\(todayDateString)"
                 
         // Fetch API information from Service Layer
-        GameAPIService.shared.fetchGameInformation(URL: apiUrl, completion: {gameListResponse in
+        GameAPIService.sharedGameAPI.fetchGameInformation(URL: apiUrl, completion: {gameListResponse in
             
             if let gameListResponse = gameListResponse {
                 // Data is retrieved

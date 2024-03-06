@@ -14,7 +14,7 @@ class StandingView: UIViewController {
     //MARK: Properties
     let standingViewModel = StandingViewModel()
     
-    private var standingData: [StandingInformation] = [] {
+    private var standingData: StandingInformation? = nil {
         didSet {
             DispatchQueue.main.async {
                 // Tableview has to be reloaded using the main thread
@@ -161,7 +161,24 @@ class StandingView: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
     }
-
+    
+    // Displays the standings information
+    private func fetchStandingsInformation() {
+        standingViewModel.fetchStandingsInformation(completion: {standings, error in
+            
+            if let error = error {
+                // There are errors
+                print("Error Fetching Standing Information")
+                return
+            } else if let standings = standings {
+                // Standing information is retrieved
+                self.standingData = standings
+            }
+            
+            
+        })
+        
+    }
     
     
     private func addTargets() {
@@ -196,6 +213,7 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
         }
         
         // Current Standings Information
+        
         
         
         return cell
