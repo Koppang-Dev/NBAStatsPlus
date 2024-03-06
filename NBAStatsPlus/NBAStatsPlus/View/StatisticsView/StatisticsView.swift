@@ -20,6 +20,9 @@ import UIKit
 
 class StatisticsView: UIViewController {
     
+    //MARK: Properties
+    let statisticsViewModel = StatisticsViewModel()
+    
     //MARK: UI Components
     private let basicStatsCollectionView: UICollectionView = {
         // Layout
@@ -29,7 +32,7 @@ class StatisticsView: UIViewController {
         // Collectionview
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        //collectionView.register(AddDeviceCell.self, forCellWithReuseIdentifier: AddDeviceCell.identifier)
+        collectionView.register(BasicStatisticsCell.self, forCellWithReuseIdentifier: BasicStatisticsCell.identifier)
         return collectionView
     }()
     
@@ -41,7 +44,7 @@ class StatisticsView: UIViewController {
         // Collectionview
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        //collectionView.register(AddDeviceCell.self, forCellWithReuseIdentifier: AddDeviceCell.identifier)
+        collectionView.register(OddsStatisticsCell.self, forCellWithReuseIdentifier: OddsStatisticsCell.identifier)
         return collectionView
     }()
     
@@ -92,10 +95,10 @@ extension StatisticsView: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == basicStatsCollectionView {
             // Pts, assists, rebounds, steals, fouls
-            return 5
+            return statisticsViewModel.basicStatsNames.count
         } else {
             // collectionView == oddsCollectionView (MVP, Champion, ROTY, DPOY)
-            return 4
+            return statisticsViewModel.oddsName.count
         }
     }
     
@@ -104,18 +107,32 @@ extension StatisticsView: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // Configuring Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         if collectionView == basicStatsCollectionView {
             // Configure for basic stats
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddDeviceCell.identifier, for: indexPath) as? AddDeviceCell else {
-                fatalError("Failed to dequeue AddDeviceCell")
-            }
-        } else {
-            // Configure for odds
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddDeviceCell.identifier, for: indexPath) as? AddDeviceCell else {
-                fatalError("Failed to dequeue AddDeviceCell")
+            guard let basicCell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicStatisticsCell.identifier, for: indexPath) as? BasicStatisticsCell else {
+                fatalError("Failed to dequeue BasicStatisticsCell")
             }
             
+            
+            
+            
+            return basicCell
+        } else {
+            // Configure for odds
+            guard let oddsCell = collectionView.dequeueReusableCell(withReuseIdentifier: OddsStatisticsCell.identifier, for: indexPath) as? OddsStatisticsCell else {
+                fatalError("Failed to dequeue OddsStatisticsCell")
+            }
+            
+            
+            return oddsCell
+            
         }
+        
+        
+        
+        
         
     }
     
