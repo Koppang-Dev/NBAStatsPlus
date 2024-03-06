@@ -176,7 +176,7 @@ class StandingView: UIViewController {
                 // There are errors
                 print("Error Fetching Standing Information:", error)
                 return
-            } else if let standingResponse = standingResponse {
+            } else if standingResponse != nil {
                 // Standings Fetched Successfully
                 DispatchQueue.main.async {
                     // Using main thread to reload tableview
@@ -263,7 +263,11 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
         
         // Returning finished cell
         return cell
-        
-        
     }
+    
+    // Function sets the height for each of the cell rows
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           // Set the height for each row
+           return 85 // Adjust the height as needed
+       }
 }
