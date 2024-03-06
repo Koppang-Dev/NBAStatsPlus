@@ -97,6 +97,8 @@ class StandingView: UIViewController {
         super.viewDidLoad()
         
         //MARK: Function Calls
+        view.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+
         
     }
     

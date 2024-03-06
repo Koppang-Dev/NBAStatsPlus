@@ -77,7 +77,8 @@ class LoginView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .orange
+        view.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+
         
         //MARK: Function Calls
         setTextFields()

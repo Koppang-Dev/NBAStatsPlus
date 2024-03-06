@@ -13,7 +13,8 @@ class AuthenticationTopView: UIView {
     // Called when instance is created
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+
         setupView()
     }
     

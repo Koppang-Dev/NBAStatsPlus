@@ -27,7 +27,8 @@ class GameListView: UIViewController {
     // Table View
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+
         tableView.allowsSelection = false
         tableView.register(GameListViewCell.self, forCellReuseIdentifier: GameListViewCell.identifier)
         return tableView
@@ -49,6 +50,9 @@ class GameListView: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+
+        
         //MARK: Function Calls
         setupUI()
         addTargets()
@@ -58,7 +62,6 @@ class GameListView: UIViewController {
     
     //MARK: SetupUI
     private func setupUI() {
-        self.view.backgroundColor = .white
         
         // Tableview
         view.addSubview(tableView)
