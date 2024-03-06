@@ -30,8 +30,8 @@ IOS that displays NBA data such as current game information, times of each game,
 </div>
 
 * Current Game Screen
-* [currentDayGame](Images/currentDayGame.png)
-* ![selectedDayGame](Images/selectedDayGame.png)
+* [currentDayGame](Images/todaysGames.png)
+* ![selectedDayGame](Images/previousGames.png)
 
 * Standings
 <div style="display: flex;">
