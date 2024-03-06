@@ -11,6 +11,19 @@ import UIKit
 
 class StandingView: UIViewController {
     
+    //MARK: Properties
+    let standingViewModel = StandingViewModel()
+    
+    private var standingData: [StandingInformation] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                // Tableview has to be reloaded using the main thread
+                self.tableView.reloadData() // Reload the table view whenever gameData is updated
+            }
+        }
+    }
+    
+    
     //MARK: Initalizing UI Components
     
     // Initalizing the table view
@@ -88,6 +101,69 @@ class StandingView: UIViewController {
     }
     
     
+    //MARK: Setup UI
+    private func setupUI() {
+        // Adding the TableView
+        self.view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // Adding the segmented control
+        self.view.addSubview(segmentControl)
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Adding wins column header
+        self.view.addSubview(winsColumnHeader)
+        winsColumnHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Adding losses column header
+        self.view.addSubview(lossesColumnHeader)
+        lossesColumnHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Adding PCT column header
+        self.view.addSubview(pctColumnHeader)
+        pctColumnHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Adding GB column header
+        self.view.addSubview(GBColumnHeader)
+        GBColumnHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Setting the constraints for everything
+        NSLayoutConstraint.activate([
+            
+            // Setting constraints for segmented control first
+            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            segmentControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            
+            // 'W' Column header
+            winsColumnHeader.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 15),
+            winsColumnHeader.leadingAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 10),
+            
+            // 'L' Column Header
+            lossesColumnHeader.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 15),
+            lossesColumnHeader.leadingAnchor.constraint(equalTo: winsColumnHeader.trailingAnchor, constant: 30),
+            
+            // 'PCT' Column Header
+            pctColumnHeader.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 15),
+            pctColumnHeader.leadingAnchor.constraint(equalTo: lossesColumnHeader.trailingAnchor, constant: 30),
+            
+            // 'GB' Column Header
+            GBColumnHeader.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 15),
+            GBColumnHeader.leadingAnchor.constraint(equalTo: pctColumnHeader.trailingAnchor, constant: 30),
+            
+            
+            
+            tableView.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 30),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        ])
+    }
+
+    
+    
     private func addTargets() {
         segmentControl.addTarget(self, action: #selector(standingsTabChanged(_:)), for: .valueChanged)
     }
@@ -108,7 +184,7 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 10
     }
     
 
@@ -121,6 +197,8 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
         
         // Current Standings Information
         
+        
+        return cell
         
         
     }
