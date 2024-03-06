@@ -172,7 +172,6 @@ class GameListViewCell: UITableViewCell {
     // Function for setting the custom cell UI
     private func setupUI() {
         
-        self.backgroundColor = .clear
         
         // Home Team ImageView
         self.contentView.addSubview(homeTeamImageView)

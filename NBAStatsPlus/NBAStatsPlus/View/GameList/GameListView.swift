@@ -28,7 +28,6 @@ class GameListView: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
-
         tableView.allowsSelection = false
         tableView.register(GameListViewCell.self, forCellReuseIdentifier: GameListViewCell.identifier)
         return tableView
