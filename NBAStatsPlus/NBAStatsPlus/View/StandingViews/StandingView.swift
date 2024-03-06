@@ -172,7 +172,7 @@ class StandingView: UIViewController {
                 return
             } else if let standings = standings {
                 // Standing information is retrieved
-                self.standingData = standings
+               // self.standingData = standings
             }
             
             

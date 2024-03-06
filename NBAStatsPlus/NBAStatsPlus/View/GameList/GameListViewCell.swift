@@ -42,7 +42,7 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 25, weight: .bold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         label.text = "" // Default text if not set
         return label
     }()
@@ -52,7 +52,7 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 25, weight: .bold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         label.text = "" // Default text if not set
         return label
     }()
@@ -72,8 +72,9 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.font = .systemFont(ofSize: 15, weight: .bold)
         label.text = "Error" // Default text if not set
+        label.adjustsFontSizeToFitWidth = false
         return label
     }()
     
@@ -82,7 +83,8 @@ class GameListViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.adjustsFontSizeToFitWidth = false
+        label.font = .systemFont(ofSize: 15, weight: .bold)
         label.text = "Error" // Default text if not set
         return label
     }()
@@ -204,16 +206,17 @@ class GameListViewCell: UITableViewCell {
             // Home Team Image View
             homeTeamImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             homeTeamImageView.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -30),
-            homeTeamImageView.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor),
+            homeTeamImageView.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor, constant: 20),
             homeTeamImageView.heightAnchor.constraint(equalToConstant: 60),
             homeTeamImageView.widthAnchor.constraint(equalToConstant: 60),
             
             // Home Team Name Label
             homeTeamLabel.topAnchor.constraint(equalTo: homeTeamImageView.bottomAnchor, constant: 10), // Below Image
             homeTeamLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor),
-            homeTeamLabel.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor),
+            homeTeamLabel.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor, constant: 0),
+           // homeTeamLabel.centerXAnchor.constraint(equalTo: homeTeamImageView.centerXAnchor),
             homeTeamLabel.heightAnchor.constraint(equalToConstant: 25),
-            homeTeamLabel.widthAnchor.constraint(equalToConstant: 60),
+            homeTeamLabel.widthAnchor.constraint(equalToConstant: 100),
             
             // Status Label
             statusLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
@@ -234,16 +237,17 @@ class GameListViewCell: UITableViewCell {
             // Away Team Image View
             awayTeamImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             awayTeamImageView.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -30),
-            awayTeamImageView.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor),
+            awayTeamImageView.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant: -20),
             awayTeamImageView.widthAnchor.constraint(equalToConstant: 60),
             awayTeamImageView.heightAnchor.constraint(equalToConstant: 60),
             
             // Away Team Name Label
             awayTeamLabel.topAnchor.constraint(equalTo: awayTeamImageView.bottomAnchor, constant: 10), // Below Image
             awayTeamLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor),
-            awayTeamLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor),
+            awayTeamLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor, constant:  0),
+            awayTeamLabel.centerXAnchor.constraint(equalTo: awayTeamImageView.centerXAnchor),
             awayTeamLabel.heightAnchor.constraint(equalToConstant: 25),
-            awayTeamLabel.widthAnchor.constraint(equalToConstant: 60),
+            awayTeamLabel.widthAnchor.constraint(equalToConstant: 100),
         ])
     }
 }
