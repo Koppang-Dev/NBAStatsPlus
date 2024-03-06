@@ -100,6 +100,31 @@ extension StandingView {
     
     // When the header is changed, show the requested standing information
     @objc func standingsTabChanged(_ sender: UISegmentedControl) {
+    }
+}
+
+// MARK: Tableview Delegate and Data Source
+extension StandingView: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Cell Instance
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StandingCell.identifier) as? StandingCell else {
+            fatalError("The TableView could not Dequeue a CustomCell in StandingView")
+        }
+        
+        // Current Standings Information
+        
+        
         
     }
+    
+    
+    
 }
