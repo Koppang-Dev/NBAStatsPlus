@@ -9,25 +9,41 @@ import Foundation
 
 class StandingViewModel {
     
+    //MARK: Properties for standings data
+    var easternStandingsList: [StandingInformation] = []
+    var westernStandingsList: [StandingInformation] = []
+    var leagueStandingsList: [StandingInformation] = []
+    
+    
     //MARK: API Standings Fetch
-    func fetchStandingsInformation(completion: @escaping ((StandingResponse?), Error?) -> Void) {
+    func fetchStandingsInformation(completion: @escaping (StandingResponse?, Error?) -> Void) {
         
         // API Information
         let url = "http://localhost:3000/api.php"
         
-        // Fetch API Data from servie layer
-        StandingAPIService.sharedStandingAPI.fetchGameInformation(URL: url, completion: {standingResponse in
+        // Fetch API Data from service layer
+        StandingAPIService.sharedStandingAPI.fetchGameInformation(URL: url) { standingsResponse in
             
-            if let standingReponse = standingResponse {
-                // Data was retrieved
-                completion(standingReponse.self, nil)
+            if let standingsResponse = standingsResponse {
+                // Data is retrieved
+                for i in 0..<15 {
+                    // Adding team information about the east
+                    self.easternStandingsList.append(standingsResponse.standing[i])
+                    self.leagueStandingsList.append(standingsResponse.standing[i])
+                }
+                for j in 15..<30 {
+                    // Adding team information about the west
+                    self.westernStandingsList.append(standingsResponse.standing[j])
+                    self.leagueStandingsList.append(standingsResponse.standing[j])
+                }
+                // Sort the league standings list
+                self.leagueStandingsList = self.mergeSortLeagueStandings(league: self.leagueStandingsList)
+                completion(standingsResponse, nil)
             } else {
-                let error = NSError(domain: "YourDomain", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch standings data"])
-                completion(nil, error)
+                completion(nil, NSError(domain: "YourDomain", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch standings data"]))
             }
-        })
+        }
     }
-    
     
         
     //MARK: Merge Sort Functions

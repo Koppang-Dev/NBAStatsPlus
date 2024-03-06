@@ -11,10 +11,12 @@ import UIKit
 
 class StandingView: UIViewController {
     
+    
     //MARK: Properties
+    private var currentConference: String!
     let standingViewModel = StandingViewModel()
     
-    private var standingData: StandingInformation? = nil {
+    private var standingData: [StandingInformation]? = nil {
         didSet {
             DispatchQueue.main.async {
                 // Tableview has to be reloaded using the main thread
@@ -95,11 +97,12 @@ class StandingView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //MARK: Function Calls
         view.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
 
         
+        //MARK: Function Calls
+        setupUI()
+        fetchStandingsInformation()
     }
     
     
@@ -166,18 +169,15 @@ class StandingView: UIViewController {
     
     // Displays the standings information
     private func fetchStandingsInformation() {
-        standingViewModel.fetchStandingsInformation(completion: {standings, error in
+        standingViewModel.fetchStandingsInformation(completion: {standingResponse, error in
             
             if let error = error {
                 // There are errors
-                print("Error Fetching Standing Information")
+                print("Error Fetching Standing Information:", error)
                 return
-            } else if let standings = standings {
-                // Standing information is retrieved
-               // self.standingData = standings
+            } else if let standingResponse = standingResponse {
+                print("Standings Fetched Successfully")
             }
-            
-            
         })
         
     }
@@ -193,17 +193,48 @@ class StandingView: UIViewController {
 //MARK: @objc functions
 extension StandingView {
     
-    // When the header is changed, show the requested standing information
-    @objc func standingsTabChanged(_ sender: UISegmentedControl) {
+    // New Standings are requested
+    @objc private func standingsTabChanged(_ segmentedControl: UISegmentedControl) {
+        
+        // Change which standings are being showed
+        switch segmentedControl.selectedSegmentIndex {
+            // Eastern Conference Selected
+        case 0:
+            currentConference = "Eastern"
+            tableView.reloadData()
+        case 1:
+            currentConference = "Western"
+            tableView.reloadData()
+            break
+        case 2:
+            currentConference = "League"
+            tableView.reloadData()
+            break
+        default:
+            currentConference = "Eastern"
+            print("Eastern Conference is selected")
+        }
     }
-}
+
+    }
 
 // MARK: Tableview Delegate and Data Source
 extension StandingView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        // Returns the current selected conference count
+        switch currentConference {
+        case "Eastern":
+            return standingViewModel.easternStandingsList.count
+        case "Western":
+            return standingViewModel.westernStandingsList.count
+        case "League":
+            return standingViewModel.leagueStandingsList.count
+        default:
+            return standingViewModel.easternStandingsList.count
+        }
     }
     
 
@@ -218,11 +249,9 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
         
         
         
+        
         return cell
         
         
     }
-    
-    
-    
 }
