@@ -37,6 +37,7 @@
 		1001DFA72B97EC9A00435861 /* StandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFA62B97EC9A00435861 /* StandingCell.swift */; };
 		1001DFA92B97ED1900435861 /* StandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFA82B97ED1900435861 /* StandingViewModel.swift */; };
 		1001DFAB2B98017600435861 /* StandingAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFAA2B98017600435861 /* StandingAPIService.swift */; };
+		1001DFAD2B98EF3300435861 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFAC2B98EF3300435861 /* TabBarView.swift */; };
 		822476ECD3CAA472D67540CA /* Pods_NBAStatsPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F1B06B403FD947ECF05C4D /* Pods_NBAStatsPlus.framework */; };
 		B2E0F0DDEF56D957ECA35F95 /* Pods_NBAStatsPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43AAB3415B791D34EE3F46A /* Pods_NBAStatsPlusTests.framework */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		1001DFA62B97EC9A00435861 /* StandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingCell.swift; sourceTree = "<group>"; };
 		1001DFA82B97ED1900435861 /* StandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingViewModel.swift; sourceTree = "<group>"; };
 		1001DFAA2B98017600435861 /* StandingAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingAPIService.swift; sourceTree = "<group>"; };
+		1001DFAC2B98EF3300435861 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		119268851FE1E6733FD64EDA /* Pods-NBAStatsPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus.release.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus/Pods-NBAStatsPlus.release.xcconfig"; sourceTree = "<group>"; };
 		1828C89FAD6C5E26C9B71289 /* Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus-NBAStatsPlusUITests/Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D47B5638D20A85732EA4286 /* Pods_NBAStatsPlus_NBAStatsPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAStatsPlus_NBAStatsPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +220,7 @@
 				1001DFA52B97EC7A00435861 /* StandingViews */,
 				1001DF9E2B95544D00435861 /* GameList */,
 				1001DF742B93C71400435861 /* OnboardingView */,
+				1001DFAC2B98EF3300435861 /* TabBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				1001DF802B93CA9000435861 /* LoginFirebaseViewModel.swift in Sources */,
 				1001DFA92B97ED1900435861 /* StandingViewModel.swift in Sources */,
 				1001DF362B93C27600435861 /* SceneDelegate.swift in Sources */,
+				1001DFAD2B98EF3300435861 /* TabBarView.swift in Sources */,
 				1001DFA02B95547500435861 /* GameListViewCell.swift in Sources */,
 				1001DF9D2B954C1D00435861 /* GameListView.swift in Sources */,
 				1001DF7E2B93CA8700435861 /* SignupFirebaseViewModel.swift in Sources */,
