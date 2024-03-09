@@ -182,6 +182,7 @@
 		1001DF322B93C27600435861 /* NBAStatsPlus */ = {
 			isa = PBXGroup;
 			children = (
+				1001DFB72B9D1E5A00435861 /* DownloadedMedia */,
 				1001DF942B953E2E00435861 /* Service */,
 				1001DF6A2B93C2F700435861 /* Storyboard */,
 				1001DF692B93C2EA00435861 /* Model */,
@@ -329,6 +330,13 @@
 				1001DFB32B98FDE000435861 /* OddsStatisticsCell.swift */,
 			);
 			path = StatisticsView;
+			sourceTree = "<group>";
+		};
+		1001DFB72B9D1E5A00435861 /* DownloadedMedia */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DownloadedMedia;
 			sourceTree = "<group>";
 		};
 		52FAA02FFEA1208192E2BD3C /* Pods */ = {
