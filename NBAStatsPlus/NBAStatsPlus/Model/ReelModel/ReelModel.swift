@@ -8,7 +8,7 @@
 import Foundation
 
 
-class VideoModel {
+class ReelModel {
     
     var mediaList = [String]()
     private var mediaCount = 0;
@@ -18,10 +18,10 @@ class VideoModel {
     func updateMediaStructures() {
         
         // URL of the outer DownloadMedia directory
-        let outerDownloadMediaURL = Bundle.main.bundleURL.appendingPathComponent("DownloadMedia")
+        let innerDownloadMediaURL = Bundle.main.bundleURL.appendingPathComponent("DownloadedMedia")
 
         // URL of the inner DownloadMedia directory
-        let innerDownloadMediaURL = outerDownloadMediaURL.appendingPathComponent("DownloadMedia")
+       // let innerDownloadMediaURL = outerDownloadMediaURL.appendingPathComponent("DownloadedMedia")
           
         do {
             // Get the contents of DownloadMedia folder
@@ -31,6 +31,7 @@ class VideoModel {
                 // Check if the URL points to an image or video
                 let mediaTypes = ["jpg", "jpeg", "mp4", "mov"]
                 if  mediaTypes.contains(media.pathExtension.lowercased()) {
+                    print("ADDED ONE")
                     mediaList.append(media.absoluteString)
                 }
             }
