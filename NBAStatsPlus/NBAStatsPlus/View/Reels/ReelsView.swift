@@ -21,6 +21,7 @@ class ReelsView: UIViewController {
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
         return collectionView
     }()

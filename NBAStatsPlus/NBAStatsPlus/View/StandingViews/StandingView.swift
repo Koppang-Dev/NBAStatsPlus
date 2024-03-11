@@ -91,6 +91,7 @@ class StandingView: UIViewController {
         let control = UISegmentedControl(items: items)
         control.selectedSegmentTintColor = .white
         control.translatesAutoresizingMaskIntoConstraints = false
+        control.selectedSegmentIndex = 0 // Initalize to the Eastern Conference
         return control
     }()
     

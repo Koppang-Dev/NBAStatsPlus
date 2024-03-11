@@ -204,11 +204,15 @@ class StandingCell: UITableViewCell {
             winLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             winLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
             winLabel.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 10),
+            winLabel.widthAnchor.constraint(equalToConstant: 20),
+            winLabel.heightAnchor.constraint(equalToConstant: 20),
             
             // Total Loses Label
             lossLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             lossLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
             lossLabel.leadingAnchor.constraint(equalTo: self.winLabel.layoutMarginsGuide.trailingAnchor, constant: 32),
+            lossLabel.widthAnchor.constraint(equalToConstant: 20),
+            lossLabel.heightAnchor.constraint(equalToConstant: 20),
             
             // Win Percent Label
             winPercentLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
