@@ -28,7 +28,7 @@ class BasicStatisticsCell: UICollectionViewCell {
         label.font = UIFont(name: "SFDisplay", size: 18)
         return label
     }()
-    
+
     
     
     

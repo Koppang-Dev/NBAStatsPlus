@@ -86,14 +86,18 @@ extension ReelsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReelsCell.identifier, for: indexPath) as! ReelsCell
         
-        // Get the next video URL from the viewModel
-        if let videoURL = reelViewModel.getNextVideoURL() {
-            print(videoURL)
-            // Configure the cell with the video URL
-            cell.configure(with: videoURL)
+        // Get the next media from the viewModel
+        if let media = reelViewModel.getNextMedia() {
+            // Configure the cell with the media from ViewModel Enum
+            switch media {
+            case .video(let url):
+                cell.configureVideo(with: url)
+            case .image(let url):
+                cell.configureImage(with: url)
+            }
         } else {
             // If there are no more videos, you can handle it accordingly
-            print("No more videos to play.")
+            print("No more media to show.")
         }
         return cell
     }

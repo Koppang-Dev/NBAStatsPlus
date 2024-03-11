@@ -6,7 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
+
+// Cases for the type of inputted media
+enum Media {
+    case video(URL)
+    case image(URL)
+}
 
 class ReelViewModel {
     
@@ -32,25 +39,29 @@ class ReelViewModel {
     }
     
     // Get next video URL
-      func getNextVideoURL() -> URL? {
-          
-          print("HERE: ", reelModel.mediaList.count)
+      func getNextMedia() -> Media? {
+
           guard currentIndex < reelModel.mediaList.count else {
+              // No more media
               return nil
           }
           
-          let videoPath = reelModel.mediaList[currentIndex]
+          // Path to the current media
+          let mediaPath = reelModel.mediaList[currentIndex]
+          print(mediaPath)
+
           
-          // Check if it is a correct URL
-          guard let videoURL = URL(string: videoPath) else {
-              print("Invalid URL")
-              return nil
+          // Determine media type
+          if mediaPath.hasSuffix(".mp4") {
+              // Is a video
+              let videoURL = URL(string: mediaPath)
+              currentIndex += 1
+              return .video(videoURL!)
+          } else {
+              // Is a image
+              let imageURL = URL(string: mediaPath)
+              currentIndex += 1
+              return .image(imageURL!)
           }
-          currentIndex += 1
-          return videoURL
       }
-    
-    
-    
-    
 }
