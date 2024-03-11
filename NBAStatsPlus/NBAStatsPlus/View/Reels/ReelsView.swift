@@ -38,7 +38,7 @@ class ReelsView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      //  collectionView.frame = view.bounds
+       collectionView.frame = view.bounds
         
     }
     
@@ -78,8 +78,7 @@ extension ReelsView: UICollectionViewDataSource {
     // Number of items
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Returns the amount of videos saved
-      //  return reelViewModel.getMediaCount()
-        return 5
+        return reelViewModel.getMediaCount()
     }
     
     

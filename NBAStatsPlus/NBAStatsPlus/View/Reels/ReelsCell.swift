@@ -25,7 +25,7 @@ class ReelsCell: UICollectionViewCell {
          setupPlayer()
          
          self.backgroundColor = .orange
-         contentView.backgroundColor = .black
+         contentView.backgroundColor = .clear
          contentView.clipsToBounds =  true
      }
      
@@ -36,13 +36,18 @@ class ReelsCell: UICollectionViewCell {
     
     private func setupPlayer() {
         player = AVPlayer()
-        playerLayer = AVPlayerLayer(player: player)
-        contentView.layer.addSublayer(playerLayer!)
+        // Initalizing PlayerLayer
+        let playerView = AVPlayerLayer()
+        playerView.player = player
+        playerView.frame = contentView.bounds
+        contentView.layer.addSublayer(playerView)
     }
     
     // Sets screen as the inputted video URL
     func configure(with videoURL: URL) {
         let playerItem = AVPlayerItem(url: videoURL)
         player?.replaceCurrentItem(with: playerItem)
+        player?.volume = 0
+        player?.play()
     }
 }

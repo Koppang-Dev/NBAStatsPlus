@@ -45,9 +45,9 @@
 		1001DFBA2B9D226300435861 /* ReelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFB92B9D226300435861 /* ReelsView.swift */; };
 		1001DFBD2B9D267000435861 /* ReelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFBC2B9D267000435861 /* ReelsCell.swift */; };
 		1001DFC02B9D2BD800435861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1001DF3F2B93C27700435861 /* Assets.xcassets */; };
-		1001DFC22B9D2C8000435861 /* DownloadedMedia in Resources */ = {isa = PBXBuildFile; fileRef = 1001DFC12B9D2C8000435861 /* DownloadedMedia */; };
 		1001DFC52B9D2D6200435861 /* ReelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFC42B9D2D6200435861 /* ReelModel.swift */; };
 		1001DFC72B9D369B00435861 /* ReelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFC62B9D369B00435861 /* ReelViewModel.swift */; };
+		100A93F12B9F8DE000E352C1 /* DownloadedMedia in Resources */ = {isa = PBXBuildFile; fileRef = 100A93F02B9F8DE000E352C1 /* DownloadedMedia */; };
 		822476ECD3CAA472D67540CA /* Pods_NBAStatsPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F1B06B403FD947ECF05C4D /* Pods_NBAStatsPlus.framework */; };
 		B2E0F0DDEF56D957ECA35F95 /* Pods_NBAStatsPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43AAB3415B791D34EE3F46A /* Pods_NBAStatsPlusTests.framework */; };
 /* End PBXBuildFile section */
@@ -118,9 +118,9 @@
 		1001DFB52B98FE5200435861 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		1001DFB92B9D226300435861 /* ReelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsView.swift; sourceTree = "<group>"; };
 		1001DFBC2B9D267000435861 /* ReelsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsCell.swift; sourceTree = "<group>"; };
-		1001DFC12B9D2C8000435861 /* DownloadedMedia */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DownloadedMedia; sourceTree = "<group>"; };
 		1001DFC42B9D2D6200435861 /* ReelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelModel.swift; sourceTree = "<group>"; };
 		1001DFC62B9D369B00435861 /* ReelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelViewModel.swift; sourceTree = "<group>"; };
+		100A93F02B9F8DE000E352C1 /* DownloadedMedia */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DownloadedMedia; sourceTree = "<group>"; };
 		119268851FE1E6733FD64EDA /* Pods-NBAStatsPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus.release.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus/Pods-NBAStatsPlus.release.xcconfig"; sourceTree = "<group>"; };
 		1828C89FAD6C5E26C9B71289 /* Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus-NBAStatsPlusUITests/Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D47B5638D20A85732EA4286 /* Pods_NBAStatsPlus_NBAStatsPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAStatsPlus_NBAStatsPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,7 +349,7 @@
 		1001DFB72B9D1E5A00435861 /* DownloadedMedia */ = {
 			isa = PBXGroup;
 			children = (
-				1001DFC12B9D2C8000435861 /* DownloadedMedia */,
+				100A93F02B9F8DE000E352C1 /* DownloadedMedia */,
 			);
 			name = DownloadedMedia;
 			path = NBAStatsPlus/DownloadedMedia;
@@ -529,7 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1001DF432B93C27700435861 /* LaunchScreen.storyboard in Resources */,
-				1001DFC22B9D2C8000435861 /* DownloadedMedia in Resources */,
+				100A93F12B9F8DE000E352C1 /* DownloadedMedia in Resources */,
 				1001DF402B93C27700435861 /* Assets.xcassets in Resources */,
 				1001DF3B2B93C27600435861 /* Main.storyboard in Resources */,
 				1001DF822B93F04500435861 /* GoogleService-Info.plist in Resources */,

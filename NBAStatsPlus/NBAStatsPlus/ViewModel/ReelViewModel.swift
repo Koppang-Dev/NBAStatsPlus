@@ -39,7 +39,13 @@ class ReelViewModel {
               return nil
           }
           
-          let videoURL = URL(fileURLWithPath: reelModel.mediaList[currentIndex])
+          let videoPath = reelModel.mediaList[currentIndex]
+          
+          // Check if it is a correct URL
+          guard let videoURL = URL(string: videoPath) else {
+              print("Invalid URL")
+              return nil
+          }
           currentIndex += 1
           return videoURL
       }
