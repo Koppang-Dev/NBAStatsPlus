@@ -17,6 +17,8 @@ class ReelsView: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
         collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
@@ -27,7 +29,7 @@ class ReelsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .black
         
         collectionView.dataSource = self
         
@@ -38,7 +40,8 @@ class ReelsView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       collectionView.frame = view.bounds
+        collectionView.frame = view.bounds
+        collectionView.backgroundColor = .black
         
     }
     
@@ -48,8 +51,8 @@ class ReelsView: UIViewController {
         
         // Set item size here because view.frame is available
             if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                layout.itemSize = CGSize(width: view.frame.size.width,
-                                         height: view.frame.size.height)
+                layout.itemSize = CGSize(width: view.bounds.width,
+                                         height: view.bounds.height)
             }
         
         // Adding UI Components to subview

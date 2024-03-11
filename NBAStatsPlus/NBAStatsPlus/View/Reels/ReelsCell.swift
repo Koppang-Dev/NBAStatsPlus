@@ -32,7 +32,7 @@ class ReelsCell: UICollectionViewCell {
         
         
         self.backgroundColor = .black
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor = .black
         contentView.clipsToBounds =  true
     }
     
@@ -40,11 +40,21 @@ class ReelsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     // Initalizing the ImageView
     private func setupImageView() {
-        imageView = UIImageView(frame: contentView.bounds)
+        imageView = UIImageView(frame: self.bounds)
         imageView?.contentMode = .scaleAspectFill
         contentView.addSubview(imageView!)
+        imageView?.clipsToBounds = true
+        
+        imageView?.translatesAutoresizingMaskIntoConstraints = false
+             NSLayoutConstraint.activate([
+                 imageView!.topAnchor.constraint(equalTo: contentView.topAnchor),
+                 imageView!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                 imageView!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                 imageView!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+             ])
     }
     
     
@@ -54,7 +64,7 @@ class ReelsCell: UICollectionViewCell {
         // Initalizing PlayerLayer
         playerView = AVPlayerLayer()
         playerView!.player = player
-        playerView!.frame = contentView.bounds
+        playerView!.frame = self.bounds
         playerView!.videoGravity = .resizeAspectFill
         contentView.layer.addSublayer(playerView!)
      }
