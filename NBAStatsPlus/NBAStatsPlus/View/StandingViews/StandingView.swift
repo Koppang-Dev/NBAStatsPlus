@@ -158,7 +158,7 @@ class StandingView: UIViewController {
             
             // 'GB' Column Header
             GBColumnHeader.topAnchor.constraint(equalTo: self.segmentControl.bottomAnchor, constant: 15),
-            GBColumnHeader.leadingAnchor.constraint(equalTo: pctColumnHeader.trailingAnchor, constant: 30),
+            GBColumnHeader.leadingAnchor.constraint(equalTo: pctColumnHeader.trailingAnchor, constant: 33),
             
             
             
@@ -269,6 +269,6 @@ extension StandingView: UITableViewDelegate, UITableViewDataSource {
     // Function sets the height for each of the cell rows
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            // Set the height for each row
-           return 85 // Adjust the height as needed
+           return 100 // Adjust the height as needed
        }
 }

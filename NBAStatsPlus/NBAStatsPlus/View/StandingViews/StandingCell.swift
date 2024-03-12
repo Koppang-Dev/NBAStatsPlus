@@ -19,9 +19,10 @@ class StandingCell: UITableViewCell {
         let teamNameLabel = UILabel()
         teamNameLabel.textColor = .label
         teamNameLabel.textAlignment = .left
-        teamNameLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 14)
+        teamNameLabel.font = UIFont(name: "Avenir-Medium", size: 15)
         teamNameLabel.text = "Error" // Default text if not set
-        teamNameLabel.numberOfLines = 0
+        teamNameLabel.numberOfLines = 1
+        teamNameLabel.adjustsFontSizeToFitWidth = true
         return teamNameLabel
     }()
     
@@ -32,9 +33,9 @@ class StandingCell: UITableViewCell {
         rankingLabel.font = .systemFont(ofSize: 12, weight: .bold)
         rankingLabel.numberOfLines = 0
         rankingLabel.textAlignment = .center
-        rankingLabel.textColor = .systemBlue
-        rankingLabel.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0)
-        rankingLabel.frame.size = CGSize(width: 30, height: 30) // Initalizing the size
+        rankingLabel.textColor = .darkGray
+        rankingLabel.backgroundColor =  UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+        rankingLabel.frame.size = CGSize(width: 25, height: 25) // Initalizing the size
         rankingLabel.layer.cornerRadius = rankingLabel.bounds.width / 2.0
         rankingLabel.clipsToBounds = true
         return rankingLabel
@@ -56,6 +57,7 @@ class StandingCell: UITableViewCell {
         winLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         winLabel.numberOfLines = 0
         winLabel.textAlignment = .center
+        winLabel.adjustsFontSizeToFitWidth = true
         winLabel.textColor = .black
         return winLabel
     }()
@@ -117,7 +119,14 @@ class StandingCell: UITableViewCell {
     
     // Setting the current cells team name
     public func setTeamName(teamName: String) {
-        self.teamNameLabel.text = teamName
+        
+        // Change timberwolves name to something shorter
+        if teamName == "Timberwolves" {
+            self.teamNameLabel.text = "Wolves"
+        } else {
+            // For every other team
+            self.teamNameLabel.text = teamName
+        }
     }
     
     // Setting the team's ranking number
@@ -185,44 +194,46 @@ class StandingCell: UITableViewCell {
             // Ranking Label
             rankingLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0),
             rankingLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            rankingLabel.widthAnchor.constraint(equalToConstant: 30),
-            rankingLabel.heightAnchor.constraint(equalToConstant: 30),
+            rankingLabel.widthAnchor.constraint(equalToConstant: 25),
+            rankingLabel.heightAnchor.constraint(equalToConstant: 25),
             
             // Team Image
             teamImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             teamImage.leadingAnchor.constraint(equalTo: self.rankingLabel.trailingAnchor, constant: 10),
-            teamImage.widthAnchor.constraint(equalToConstant: 50),
-            teamImage.heightAnchor.constraint(equalToConstant: 50),
+            teamImage.widthAnchor.constraint(equalToConstant: 60),
+            teamImage.heightAnchor.constraint(equalToConstant: 60),
 
             
             // Team Name Label
             teamNameLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             teamNameLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
             teamNameLabel.leadingAnchor.constraint(equalTo: self.teamImage.layoutMarginsGuide.trailingAnchor, constant: 15),
+            teamNameLabel.widthAnchor.constraint(equalToConstant: 75),
+
             
             // Total Wins Label
             winLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             winLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
-            winLabel.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 10),
+            winLabel.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: 7),
             winLabel.widthAnchor.constraint(equalToConstant: 20),
             winLabel.heightAnchor.constraint(equalToConstant: 20),
             
             // Total Loses Label
             lossLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             lossLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
-            lossLabel.leadingAnchor.constraint(equalTo: self.winLabel.layoutMarginsGuide.trailingAnchor, constant: 32),
+            lossLabel.leadingAnchor.constraint(equalTo: self.winLabel.layoutMarginsGuide.trailingAnchor, constant: 29),
             lossLabel.widthAnchor.constraint(equalToConstant: 20),
             lossLabel.heightAnchor.constraint(equalToConstant: 20),
             
             // Win Percent Label
             winPercentLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             winPercentLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
-            winPercentLabel.leadingAnchor.constraint(equalTo: self.lossLabel.layoutMarginsGuide.trailingAnchor, constant: 40),
+            winPercentLabel.leadingAnchor.constraint(equalTo: self.lossLabel.layoutMarginsGuide.trailingAnchor, constant: 29),
             
             // Games Back Label
             gamesBackLabel.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor, constant: 8),
             gamesBackLabel.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor, constant: -8),
-            gamesBackLabel.leadingAnchor.constraint(equalTo: self.rankingLabel.layoutMarginsGuide.trailingAnchor, constant: 305)
+            gamesBackLabel.leadingAnchor.constraint(equalTo: self.rankingLabel.layoutMarginsGuide.trailingAnchor, constant: 307)
         ])
         
     }
