@@ -57,11 +57,16 @@ class ReelViewModel {
               let videoURL = URL(string: mediaPath)
               currentIndex += 1
               return .video(videoURL!)
-          } else {
+     /*     } else if mediaPath.hasSuffix(".jpg"){
               // Is a image
               let imageURL = URL(string: mediaPath)
               currentIndex += 1
               return .image(imageURL!)
+             */
+          } else {
+              // Not acceptable media
+              currentIndex += 1
+              return getNextMedia()
           }
       }
 }

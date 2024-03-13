@@ -21,7 +21,7 @@ downloaded_count = 0
 
 # Iterate through the posts and download images and videos
 for post in profile.get_posts():
-    if downloaded_count >= 5:
+    if downloaded_count >= 25:
         break  # Exit the loop if 5 posts have been downloaded
     
     # Check if the post is an image or video based on file extension
