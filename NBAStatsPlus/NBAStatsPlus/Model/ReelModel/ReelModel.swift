@@ -18,7 +18,7 @@ class ReelModel {
     func updateMediaStructures() {
         
         // URL of the outer DownloadMedia directory
-        let innerDownloadMediaURL = Bundle.main.bundleURL.appendingPathComponent("nba")
+        let innerDownloadMediaURL = Bundle.main.bundleURL.appendingPathComponent("MediaFolder")
 
         // URL of the inner DownloadMedia directory
        // let innerDownloadMediaURL = outerDownloadMediaURL.appendingPathComponent("DownloadedMedia")
