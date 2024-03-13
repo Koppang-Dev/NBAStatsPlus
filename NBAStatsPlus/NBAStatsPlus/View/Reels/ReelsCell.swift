@@ -67,6 +67,8 @@ class ReelsCell: UICollectionViewCell {
         playerView!.frame = self.bounds
         playerView!.videoGravity = .resizeAspectFill
         contentView.layer.addSublayer(playerView!)
+        player?.pause()
+        player?.volume = 0.0
      }
     
     func configureVideo(with url: URL) {
@@ -74,10 +76,34 @@ class ReelsCell: UICollectionViewCell {
         playerView?.isHidden = false
         let playerItem = AVPlayerItem(url: url)
         player?.replaceCurrentItem(with: playerItem)
-        player?.volume = 0
+        player?.volume = 0.0 // Normal Volume
         player?.play()
+        
+        
+          // Set a timer to delay video playback
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+              // Check if the cell is still visible
+              if let collectionView = self.superview as? UICollectionView,
+                 let indexPath = collectionView.indexPath(for: self),
+                 collectionView.visibleCells.contains(self),
+                 indexPath == collectionView.indexPathsForVisibleItems.first {
+                  // Cell is fully visible and is the first visible cell
+                  self.player?.play()
+                  self.player?.volume = 1.0 // Set normal volume
+              }
+          }
+          
+        
         // Adding loop to the videos
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Pause the player and reset it
+        player?.pause()
+        player?.replaceCurrentItem(with: nil)
     }
     
     // In ReelsCell.swift
@@ -99,5 +125,11 @@ class ReelsCell: UICollectionViewCell {
         // Put player to the beggining to loop the video
         player?.seek(to: CMTime.zero)
         player?.play()
+    }
+    
+    
+    // Stop the video when the user goes to the next one
+    func stopVideo() {
+        player?.pause()
     }
 }

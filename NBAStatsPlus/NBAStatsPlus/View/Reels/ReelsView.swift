@@ -33,6 +33,7 @@ class ReelsView: UIViewController {
         view.backgroundColor = .black
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         //MARK: Function Calls
         reelViewModel.updateMedia()
@@ -77,7 +78,7 @@ class ReelsView: UIViewController {
 
 
 //MARK: Collectionview Datasource
-extension ReelsView: UICollectionViewDataSource {
+extension ReelsView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // Number of items
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,6 +105,14 @@ extension ReelsView: UICollectionViewDataSource {
             print("No more media to show.")
         }
         return cell
+    }
+    
+    // When the user moves onto the next video
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // Get the cell information
+        if let reelsCell = cell as? ReelsCell {
+            reelsCell.stopVideo()
+        }
     }
     
     
