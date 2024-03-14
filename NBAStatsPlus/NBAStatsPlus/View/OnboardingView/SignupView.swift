@@ -12,6 +12,7 @@ import UIKit
 class SignupView: UIViewController {
     
     //MARK: Variable Initalizing
+    let viewHelper = TextFieldHelper()
     let insideStack = UIStackView()
     var usernameField = UITextField()
     var retypeField = UITextField()
@@ -231,34 +232,12 @@ func makeButton(withText text: String) -> UIButton {
 
 // MARK: UI Functions
 extension SignupView {
-    
-    // Create the textfields
-    public func createTextfield(text: String, imageName: String) -> UITextField {
-        let textField = UITextField()
-        let image = UIImage(systemName: imageName)
-        textField.setLeftView(image: image!)
-        
-        let attributedPlaceholder = NSAttributedString(
-            string: text,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
-        )
-        textField.attributedPlaceholder = attributedPlaceholder
-        textField.textAlignment = .center
-        textField.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
-        textField.layer.cornerRadius = 15
-        textField.textColor = .black
-        textField.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
-        textField.widthAnchor.constraint(equalToConstant: 300).isActive =  true
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive =  true
-        return textField
-    }
-    
     // Initalizing textfield information
     func setTextFields() {
-        usernameField = createTextfield(text: "Username",imageName: "person.fill")
-        emailField = createTextfield(text: "Email Address", imageName: "note.text")
-        passwordField = createTextfield(text: "Password", imageName: "key.fill")
-        retypeField = createTextfield(text: "Retype Password", imageName: "key.fill")
+        usernameField = viewHelper.createTextfield(text: "Username",imageName: "person.fill")
+        emailField = viewHelper.createTextfield(text: "Email Address", imageName: "note.text")
+        passwordField = viewHelper.createTextfield(text: "Password", imageName: "key.fill")
+        retypeField = viewHelper.createTextfield(text: "Retype Password", imageName: "key.fill")
         passwordField.isSecureTextEntry = false
         retypeField.isSecureTextEntry = false
     }

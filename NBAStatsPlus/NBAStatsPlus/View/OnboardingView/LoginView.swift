@@ -16,7 +16,7 @@ class LoginView: UIViewController {
     private var viewModel = LoginFirebaseViewModel() // Initalizing viewModel
 
     // Initalizing Top View
-    let viewHelper = SignupView()
+    let viewHelper = TextFieldHelper()
     let viewStack = UIStackView()
     let topView = AuthenticationTopView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
     var emailField = UITextField()
@@ -168,7 +168,6 @@ extension LoginView {
         
         // Call ViewModel to handle login
         viewModel.handleLogin(email: email, password: password) {success, error in
-            
             if success {
                 // Login is successful, so transition to main screen
                 self.loginToMainScreen()
@@ -192,8 +191,6 @@ extension LoginView {
         emailField = viewHelper.createTextfield(text: "Email Address", imageName: "note.text")
         passwordField = viewHelper.createTextfield(text: "Password", imageName: "key.fill")
     }
-    
-    
     
     // Displaying an Error Message
     func setErrorMessage(message: String) {
@@ -222,9 +219,9 @@ extension LoginView {
     }
     
     func loginToMainScreen() {
-        //let vc = TabBarViewController()
-        //vc.modalPresentationStyle = .fullScreen
-        //self.present(vc, animated: true)
+        let vc = TabBarView()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
 

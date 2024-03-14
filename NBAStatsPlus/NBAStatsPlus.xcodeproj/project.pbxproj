@@ -48,6 +48,7 @@
 		1001DFC52B9D2D6200435861 /* ReelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFC42B9D2D6200435861 /* ReelModel.swift */; };
 		1001DFC72B9D369B00435861 /* ReelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1001DFC62B9D369B00435861 /* ReelViewModel.swift */; };
 		1062697A2BA35E63007E67B7 /* MediaFolder in Resources */ = {isa = PBXBuildFile; fileRef = 106269792BA35E63007E67B7 /* MediaFolder */; };
+		1062697C2BA38BF7007E67B7 /* TextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1062697B2BA38BF7007E67B7 /* TextFieldHelper.swift */; };
 		822476ECD3CAA472D67540CA /* Pods_NBAStatsPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F1B06B403FD947ECF05C4D /* Pods_NBAStatsPlus.framework */; };
 		B2E0F0DDEF56D957ECA35F95 /* Pods_NBAStatsPlusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43AAB3415B791D34EE3F46A /* Pods_NBAStatsPlusTests.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		1001DFC42B9D2D6200435861 /* ReelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelModel.swift; sourceTree = "<group>"; };
 		1001DFC62B9D369B00435861 /* ReelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelViewModel.swift; sourceTree = "<group>"; };
 		106269792BA35E63007E67B7 /* MediaFolder */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MediaFolder; sourceTree = "<group>"; };
+		1062697B2BA38BF7007E67B7 /* TextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelper.swift; sourceTree = "<group>"; };
 		119268851FE1E6733FD64EDA /* Pods-NBAStatsPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus.release.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus/Pods-NBAStatsPlus.release.xcconfig"; sourceTree = "<group>"; };
 		1828C89FAD6C5E26C9B71289 /* Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; path = "Target Support Files/Pods-NBAStatsPlus-NBAStatsPlusUITests/Pods-NBAStatsPlus-NBAStatsPlusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D47B5638D20A85732EA4286 /* Pods_NBAStatsPlus_NBAStatsPlusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAStatsPlus_NBAStatsPlusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +289,7 @@
 				1001DF6D2B93C42800435861 /* PageViews.swift */,
 				1001DF722B93C6F500435861 /* SignupView.swift */,
 				1001DF752B93C79D00435861 /* AuthenticationTopView.swift */,
+				1062697B2BA38BF7007E67B7 /* TextFieldHelper.swift */,
 			);
 			path = OnboardingView;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				1001DFA92B97ED1900435861 /* StandingViewModel.swift in Sources */,
 				1001DFC72B9D369B00435861 /* ReelViewModel.swift in Sources */,
 				1001DF362B93C27600435861 /* SceneDelegate.swift in Sources */,
+				1062697C2BA38BF7007E67B7 /* TextFieldHelper.swift in Sources */,
 				1001DFAD2B98EF3300435861 /* TabBarView.swift in Sources */,
 				1001DFA02B95547500435861 /* GameListViewCell.swift in Sources */,
 				1001DF9D2B954C1D00435861 /* GameListView.swift in Sources */,

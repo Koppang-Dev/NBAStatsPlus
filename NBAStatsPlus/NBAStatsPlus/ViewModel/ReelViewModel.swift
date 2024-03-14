@@ -19,7 +19,7 @@ class ReelViewModel {
     
     //MARK: Properties
     let reelModel = ReelModel()
-    var currentIndex = 0
+     var currentIndex = 0
 
     
     private var mediaCount: Int {

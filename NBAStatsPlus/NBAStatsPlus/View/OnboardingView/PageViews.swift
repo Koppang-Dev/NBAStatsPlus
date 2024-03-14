@@ -53,16 +53,16 @@ extension PageViews {
         let page1 = OnboardingView(imageName: "kyrie.jpeg",
                                              titleText: "Welcome to NBA Stats ",
                                              subtitleText: "Explore the world of basketball with real-time statistics, scores, and player insights. Your ultimate companion for staying updated on the NBA",
-                                             viewColour: .systemYellow)
+                                             viewColour:  UIColor(red: 250/255, green: 192/255, blue: 94/255, alpha: 1.0))
                                              
         let page2 = OnboardingView(imageName: "IT.jpeg",
                                              titleText: "Dive into the Game",
                                              subtitleText: "Immerse yourself in the excitement of NBA games. Get detailed player stats, team performance, and the latest highlights. Your front-row seat to the action!",
-                                             viewColour: .systemGreen)
+                                             viewColour: UIColor(red: 89/255, green: 205/255, blue: 144/255, alpha: 1.0))
         let page3 = OnboardingView(imageName: "demar.png",
                                              titleText: "Your Stats, Your Way",
                                              subtitleText: "Customize your NBA experience. Follow your favorite teams and players, receive personalized notifications, and stay connected to the game like never before",
-                                             viewColour: .systemRed)
+                                             viewColour: UIColor(red: 238/255, green: 99/255, blue: 82/255, alpha: 1.0))
         
         let page4 = LoginView(); // View Controller for the user to enter account information
         
@@ -81,6 +81,11 @@ extension PageViews {
     
     //MARK: Style Function
     func style() {
+        
+        // Button tint colours
+        skipButton.tintColor =  UIColor(red: 0.247, green: 0.655, blue: 0.839, alpha: 1.0)
+        nextButton.tintColor =  UIColor(red: 0.247, green: 0.655, blue: 0.839, alpha: 1.0)
+        
 
         // Page Control UI
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -131,6 +136,7 @@ extension PageViews {
         ])
     }
 }
+
 
 
 
@@ -226,7 +232,7 @@ extension PageViews: UIPageViewControllerDataSource {
  Gestures and navigation
  Transition completion handling
  */
-extension PageViews: UIPageViewControllerDelegate {
+extension PageViews: UIPageViewControllerDelegate, UIGestureRecognizerDelegate {
     
     /*
      Called after the animation of a page completes
@@ -293,9 +299,7 @@ extension PageViews: UIPageViewControllerDelegate {
         skipButton.isHidden = false
         nextButton.isHidden = false
     }
-    
-    
-}
+    }
 
 
 // Adding additional functionality without changing the original source code
