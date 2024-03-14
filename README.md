@@ -46,8 +46,8 @@ Welcome to the NBA Stats Plus app! This app provides you with comprehensive NBA 
 
 
 # App Demo Video
-This app relies on a local server for certain functionalities, such as retrieving real-time NBA standings and data. Therefore, it cannot be fully run remotely or on a simulator. However, you can watch a demonstration of the app's features in action on my YouTube channel 
-**[here](link_to_youtube_video)**
+- This app relies on a local server for certain functionalities, such as retrieving real-time NBA standings and data. Therefore, it cannot be fully run remotely or on a simulator. However, you can watch a demonstration of the app's features in action on my YouTube channel 
+- **[Link to App Demonstration](link_to_youtube_video)**
 
 # Screenshots
 
@@ -85,12 +85,6 @@ This app relies on a local server for certain functionalities, such as retrievin
 </div>
 
 
-
-
 # License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-• Some data is gathered from @ballislife api
