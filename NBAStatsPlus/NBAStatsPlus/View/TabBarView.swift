@@ -21,6 +21,10 @@ class TabBarView: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let tabBarController = self.tabBarController {
+                  tabBarController.delegate = self
+              }
+        
         //MARK: Function Calls
         configureTabs()
     }
@@ -40,6 +44,20 @@ class TabBarView: UITabBarController {
         
         // Adding the view controllers in the NavigatioViewController
         setViewControllers([vc1, vc2, vc3], animated: false)
+    }
+}
+
+
+// Handling when the tab is changed
+extension TabBarView: UITabBarControllerDelegate {
+    // Dectect when a tab changes
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if let previousViewController = tabBarController.selectedViewController,
+           previousViewController is ReelsView {
+            // If user is leaving Reels View (Pause video)
+            print("Leaving from Reels View")
+        }
     }
 }
 

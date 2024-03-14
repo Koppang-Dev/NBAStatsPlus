@@ -103,7 +103,7 @@ class ReelsCell: UICollectionViewCell {
         super.prepareForReuse()
         // Pause the player and reset it
         player?.pause()
-        player?.replaceCurrentItem(with: nil)
+        player?.volume = 0.0
     }
     
     // In ReelsCell.swift
@@ -131,5 +131,11 @@ class ReelsCell: UICollectionViewCell {
     // Stop the video when the user goes to the next one
     func stopVideo() {
         player?.pause()
+        player?.volume = 0.0
+    }
+    
+    func startVideo() {
+        player?.play()
+        player?.volume = 1.0
     }
 }

@@ -44,7 +44,18 @@ class ReelsView: UIViewController {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
         collectionView.backgroundColor = .black
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Pause the video
+        pauseVideoPlayback()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Start the video
+        startVideoPlayback()
     }
     
     
@@ -52,10 +63,10 @@ class ReelsView: UIViewController {
     private func setupUI() {
         
         // Set item size here because view.frame is available
-            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                layout.itemSize = CGSize(width: view.bounds.width,
-                                         height: view.bounds.height)
-            }
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: view.bounds.width,
+                                     height: view.bounds.height)
+        }
         
         // Adding UI Components to subview
         view.addSubview(collectionView)
@@ -71,8 +82,30 @@ class ReelsView: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        
+            
         ])
+    }
+    
+    // Pauses the video
+    private func pauseVideoPlayback() {
+        // Iterate through visible cells in the collection view and pause video playback
+        guard let visibleCells = collectionView.visibleCells as? [ReelsCell] else {
+            return
+        }
+        for cell in visibleCells {
+            cell.stopVideo()
+        }
+    }
+    
+    // Starts the video
+    private func startVideoPlayback() {
+        // Iterate through visible cells in the collection view and pause video playback
+        guard let visibleCells = collectionView.visibleCells as? [ReelsCell] else {
+            return
+        }
+        for cell in visibleCells {
+            cell.startVideo()
+        }
     }
 }
 
