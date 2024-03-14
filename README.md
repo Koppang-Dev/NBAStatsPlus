@@ -25,7 +25,6 @@ Welcome to the NBA Stats Plus app! This app provides you with comprehensive NBA 
 4. **Reels Tab**:
    - Watch NBA videos curated from Instagram.
    - Our Python script gathers videos from Instagram and displays them here.
-   - Uses
    - Relies on AVFoundation to display the videos and update depending on user actions
   
    
