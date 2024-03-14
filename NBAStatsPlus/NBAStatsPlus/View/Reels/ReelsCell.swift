@@ -15,6 +15,8 @@ class ReelsCell: UICollectionViewCell {
     
     //MARK: Properties
     static let identifier = "ReelsCell"
+    let reelViewModel = ReelViewModel()
+    var isVideoPlaying: Bool = false
     
     // Subviews
     var player: AVPlayer?
@@ -49,12 +51,12 @@ class ReelsCell: UICollectionViewCell {
         imageView?.clipsToBounds = true
         
         imageView?.translatesAutoresizingMaskIntoConstraints = false
-             NSLayoutConstraint.activate([
-                 imageView!.topAnchor.constraint(equalTo: contentView.topAnchor),
-                 imageView!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                 imageView!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                 imageView!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-             ])
+        NSLayoutConstraint.activate([
+            imageView!.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
     
     
@@ -67,33 +69,14 @@ class ReelsCell: UICollectionViewCell {
         playerView!.frame = self.bounds
         playerView!.videoGravity = .resizeAspectFill
         contentView.layer.addSublayer(playerView!)
-        player?.pause()
-        player?.volume = 0.0
-     }
+    }
     
     func configureVideo(with url: URL) {
         imageView?.isHidden = true
         playerView?.isHidden = false
         let playerItem = AVPlayerItem(url: url)
         player?.replaceCurrentItem(with: playerItem)
-        player?.volume = 0.0 // Normal Volume
-        player?.play()
-        
-        
-          // Set a timer to delay video playback
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-              // Check if the cell is still visible
-              if let collectionView = self.superview as? UICollectionView,
-                 let indexPath = collectionView.indexPath(for: self),
-                 collectionView.visibleCells.contains(self),
-                 indexPath == collectionView.indexPathsForVisibleItems.first {
-                  // Cell is fully visible and is the first visible cell
-                  self.player?.play()
-                  self.player?.volume = 1.0 // Set normal volume
-              }
-          }
-          
-        
+        startVideo()
         // Adding loop to the videos
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
     }
@@ -102,8 +85,7 @@ class ReelsCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         // Pause the player and reset it
-        player?.pause()
-        player?.volume = 0.0
+        stopVideo()
     }
     
     // In ReelsCell.swift
@@ -125,17 +107,28 @@ class ReelsCell: UICollectionViewCell {
         // Put player to the beggining to loop the video
         player?.seek(to: CMTime.zero)
         player?.play()
+        player?.volume = 1.0
     }
     
     
-    // Stop the video when the user goes to the next one
+    func startVideo() {
+        // Stop video playback in all other cells
+        if let collectionView = superview as? UICollectionView {
+            for cell in collectionView.visibleCells {
+                if let reelsCell = cell as? ReelsCell, reelsCell != self && reelsCell.isVideoPlaying {
+                    reelsCell.stopVideo()
+                }
+            }
+        }
+        // Start video playback in the current cell
+        player?.play()
+        player?.volume = 1.0
+        isVideoPlaying = true
+    }
+    
     func stopVideo() {
         player?.pause()
         player?.volume = 0.0
-    }
-    
-    func startVideo() {
-        player?.play()
-        player?.volume = 1.0
+        isVideoPlaying = false // Update isVideoPlaying when video playback stops
     }
 }

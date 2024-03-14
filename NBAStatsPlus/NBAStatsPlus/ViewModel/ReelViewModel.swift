@@ -19,7 +19,7 @@ class ReelViewModel {
     
     //MARK: Properties
     let reelModel = ReelModel()
-    private var currentIndex = 0
+    var currentIndex = 0
 
     
     private var mediaCount: Int {
@@ -42,8 +42,9 @@ class ReelViewModel {
       func getNextMedia() -> Media? {
 
           guard currentIndex < reelModel.mediaList.count else {
-              // No more media
-              return nil
+              // No more media (reset count)
+              currentIndex = 0
+              return getNextMedia()
           }
           
           // Path to the current media
