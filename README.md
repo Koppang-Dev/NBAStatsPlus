@@ -32,7 +32,7 @@ IOS that displays NBA data such as current game information, times of each game,
 * Current Game Screen
 * <div style="display: flex;">
   <img src="Images/todaysGames.png" alt="Image 1" style="width: 200px; height: auto;">
-  <img src="Images/selectedGame.png" alt="Image 2" style="width: 200px; height: auto;">
+  <img src="Images/selectedGames.png" alt="Image 2" style="width: 200px; height: auto;">
 </div>
 
 * Standings
@@ -41,6 +41,15 @@ IOS that displays NBA data such as current game information, times of each game,
   <img src="Images/west.png" alt="Image 2" style="width: 200px; height: auto;">
   <img src="Images/league.png" alt="Image 1" style="width: 200px; height: auto;">
 </div>
+
+* Reels
+<div style="display: flex;">
+  <img src="Images/reelsOne.png" alt="Image 1" style="width: 200px; height: auto;">
+  <img src="Images/reelsTwo.png" alt="Image 2" style="width: 200px; height: auto;">
+  <img src="Images/reelsThree.png" alt="Image 1" style="width: 200px; height: auto;">
+</div>
+
+
 
 
 # License
