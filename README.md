@@ -14,6 +14,10 @@ IOS that displays NBA data such as current game information, times of each game,
 1. Download code into XCode
 2. Connect Iphone and run program through XCode
 
+# App Demo Video
+[![App Demo Video](http://img.youtube.com/vi/VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=VIDEO_ID_HERE)
+
+
 # Screenshots
 
 * Entry View Controllers
