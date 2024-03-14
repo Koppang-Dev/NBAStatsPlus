@@ -70,7 +70,7 @@ Welcome to the NBA Stats Plus app! This app provides you with comprehensive NBA 
 </div>
 
 * Current Game Screen
-* <div style="display: flex;">
+<div style="display: flex;">
   <img src="Images/todaysGames.png" alt="Image 1" style="width: 200px; height: auto;">
   <img src="Images/selectedGames.png" alt="Image 2" style="width: 200px; height: auto;">
 </div>
