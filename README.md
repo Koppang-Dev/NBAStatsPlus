@@ -44,6 +44,11 @@ Welcome to the NBA Stats Plus app! This app provides you with comprehensive NBA 
   - pandas: Python library for data manipulation and analysis, utilized for processing scraped NBA data and preparing it for storage.
   - Google Firebase: Backend-as-a-Service (BaaS) platform providing authentication, real-time database, cloud storage, and hosting services for the iOS app.
 
+* **App Architecture**:
+  - The NBA Stats Plus app follows the MVVM architecture pattern
+  - The ViewControllers are solely responisible for displaying the user interface
+  - The ViewModel is the mediator between the View and Model, providing darta to the view and handling user interactions
+  - Additionally, a service layer is used for API decoding
 
 # App Demo Video
 - This app relies on a local server for certain functionalities, such as retrieving real-time NBA standings and data. Therefore, it cannot be fully run remotely or on a simulator. However, you can watch a demonstration of the app's features in action on my YouTube channel 
