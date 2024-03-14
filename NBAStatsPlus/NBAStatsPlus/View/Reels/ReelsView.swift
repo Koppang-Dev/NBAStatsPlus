@@ -140,6 +140,13 @@ extension ReelsView: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let reelsCell = cell as? ReelsCell {
+            reelsCell.startVideo()
+        }
+    }
+    
     // When the user moves onto the next video
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // Get the cell information
@@ -147,7 +154,6 @@ extension ReelsView: UICollectionViewDataSource, UICollectionViewDelegate {
             reelsCell.stopVideo()
         }
     }
-    
-    
 }
+
 

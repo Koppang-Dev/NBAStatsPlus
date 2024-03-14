@@ -76,7 +76,7 @@ class ReelsCell: UICollectionViewCell {
         playerView?.isHidden = false
         let playerItem = AVPlayerItem(url: url)
         player?.replaceCurrentItem(with: playerItem)
-        startVideo()
+
         // Adding loop to the videos
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
     }
