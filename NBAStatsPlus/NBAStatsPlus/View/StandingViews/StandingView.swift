@@ -99,6 +99,7 @@ class StandingView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 247/255, green: 243/255, blue: 227/255, alpha: 1.0)
+        overrideUserInterfaceStyle = .light
 
         
         //MARK: Function Calls
