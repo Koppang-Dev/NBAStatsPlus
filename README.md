@@ -47,7 +47,7 @@ Welcome to the NBA Stats Plus app! This app provides you with comprehensive NBA 
 
 # App Demo Video
 - This app relies on a local server for certain functionalities, such as retrieving real-time NBA standings and data. Therefore, it cannot be fully run remotely or on a simulator. However, you can watch a demonstration of the app's features in action on my YouTube channel 
-- **[Link to App Demonstration](link_to_youtube_video)**
+- **[Link to App Demonstration](https://youtu.be/v3B8bzLYldE)**
 
 # Screenshots
 
